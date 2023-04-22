@@ -10,7 +10,9 @@ function App() {
    let handLeName = (e) =>{
     setname(e.target.value)
    }
-   return( <Person/> );
+   return( 
+   <Person/>
+   );
 
 //   return (
 //     <div className="App">
