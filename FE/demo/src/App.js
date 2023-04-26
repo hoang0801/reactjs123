@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './components/Footer';
 import { useState } from 'react';
 import Person from './pages/Person';
+import { Category } from './pages/Category';
 
 function App() {
    let [name, setname] = useState("Hoang");
@@ -11,7 +12,8 @@ function App() {
     setname(e.target.value)
    }
    return( 
-   <Person/>
+   // <Person/>
+   <Category/>
    );
 
 //   return (
