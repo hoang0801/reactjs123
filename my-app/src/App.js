@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { MenuFooter } from './components/Footer';
 import { Person } from './page/Person';
+import { Login } from './page/Login';
 const PI=3.14
 function App() {
    let cvHinhTron =(r) => (PI * r * 2);//reurn
@@ -17,6 +18,8 @@ function App() {
       <p>Hello 1124124</p>
     </div>
   )
+
+  return ( <Login/>)
   return (//jsx
     <div className="App">
       <input onKeyUp={handleName} />
@@ -38,3 +41,4 @@ function Hello(){
 }
 
 export default App;
+
