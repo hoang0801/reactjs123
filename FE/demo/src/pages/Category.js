@@ -1,26 +1,29 @@
 import { useEffect, useState } from "react";
-import { searchCategoryIPA } from "../service/category.service";
+import { searchCategoryIPA, testPromise } from "../service/category.service";
 
 export function Category() {
     let [categoryArr, setCategoryArr] = useState([]);
 
-    //  let async getData =()=>{
-    //     searchCategoryIPA((resp)=>{
-    //         console.log(resp.data);
+     let getData = async()=>{
+        // searchCategoryIPA().then((resp)=>{
+        //     console.log(resp);// resp.data la mang category
 
-    //         setCategoryArr(resp.data)
-    //     })
-    // }
-    useEffect(()=>{
-        getABC()
+        //     setCategoryArr(resp.data)//goi api
+        
+        // })
+        try{
+            let resp = await searchCategoryIPA(
+                setCategoryArr(resp.data))
+        }catch (err){
+            console.log(err)
+        }
+        
 
+    }
+    useEffect(() =>{
+        getData();
+        // testPromise()
     },[])
-    async  function  getABC () {
-       const resp=await searchCategoryIPA();
-       console.log(resp);
-  
-        return resp;
-      }
     return (
         <div>
         <table>
