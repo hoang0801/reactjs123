@@ -13,7 +13,7 @@ xhr.addEventListener("readystatechange", function() {
   if(this.readyState === 4) {
     console.log(this.responseText);
    let res = JSON.parse(this.responseText);
-    callbackData(res) //goi ham callbackData truyen vao
+   resolve(res) //goi ham call truyen vao
   }
 });
 
