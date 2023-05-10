@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import { useState } from 'react';
 import Person from './pages/Person';
 import { Category } from './pages/Category';
-import { BrowserRouter, Navigate, Outlet, Route, Router } from 'react-router-dom';
+// import { BrowserRouter, Navigate, Outlet, Route, Router } from 'react-router-dom';
 import Login from './pages/Login';
 
 function App() {
@@ -12,52 +12,52 @@ function App() {
 
    let handLeName = (e) =>{
     setname(e.target.value)
-   // }
-   //  return(
-   //    <BrowserRouter>
-   //      <Route path='/login' element={<Login/>}/>
-   //      <Route path ='dashboard'>
-   //       <Router index element={<Navigate to="/dashboard/category"  />}/>
+   }
+    // return(
+    //   <BrowserRouter>
+    //     <Route path='/login' element={<Login/>}/>
+    //     <Route path ='dashboard'>
+    //      <Router index element={<Navigate to="/dashboard/category"  />}/>
 
-   //       <Router path='category' element={<Category/>}/>
-   //       <Router path='person' element={<Person/>}/>
-   //      </Route>
-   //      <Router path='/' element ={<Navigate to="/dashboard"/>}/>
-   //      <Router path='*' element={<Notfound/>}/>
+    //      <Router path='category' element={<Category/>}/>
+    //      <Router path='person' element={<Person/>}/>
+    //     </Route>
+    //     <Router path='/' element ={<Navigate to="/dashboard"/>}/>
+    //     <Router path='*' element={<Notfound/>}/>
 
-   //    </BrowserRouter>  
-   //  )
-   //   function DashboardLayout(){
-   //    return
-   //    <div>
-   //       <ul>
-   //       <li>
-   //          <link to={"/login"}></link>
-   //       </li>
-   //       <li>
-   //          <link to={"/dashboard/category"}>Category</link>
-   //       </li>
-   //       <li>
-   //          <link to={"/dashboard/person"}>person</link>
-   //       </li>
-   //       </ul>
-   //       <h1>Menu</h1>
-   //       <Outlet/>
-   //       <h1>Footer</h1>
-   //    </div>
+    //   </BrowserRouter>  
+    // )
+    //  function DashboardLayout(){
+    //   return
+    //   <div>
+    //      <ul>
+    //      <li>
+    //         <link to={"/login"}></link>
+    //      </li>
+    //      <li>
+    //         <link to={"/dashboard/category"}>Category</link>
+    //      </li>
+    //      <li>
+    //         <link to={"/dashboard/person"}>person</link>
+    //      </li>
+    //      </ul>
+    //      <h1>Menu</h1>
+    //      <Outlet/>
+    //      <h1>Footer</h1>
+    //   </div>
 
-     }
+    //  }
 
 
-   //  function Notfound(){
-   //    return <h1>404</h1>
-   //  }
+    // function Notfound(){
+    //   return <h1>404</h1>
+    // }
 
 
    return( 
    // <Person/>
-   // <Category/>
-   <Login/>
+   <Category/>
+  //  <Login/>
    );
 
 //   return (

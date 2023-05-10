@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { LoginAPI } from "../service/Login.service";
 
 export default function Login(){
@@ -8,7 +8,7 @@ export default function Login(){
 
 
 
-    let Navigate = useNavigate()
+    // let Navigate = useNavigate()
 
     let login = async ()=>{
         try{
