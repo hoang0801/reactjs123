@@ -2,23 +2,21 @@ import { useEffect, useState } from "react";
 import { searchCategoryAPI,testPromise } from "../service/category.service";
 
 export function Category() {
-    let [ searchCategory, setSearchCategory] = useState({})
-    // const categries=[1,2,3,4]
+    let[ categoryArr, setCategoryArr]= useState([])
+    let [ searchCategory, setSearchCategory] = useState({
+        "start": 0,
+        "Length": 10,
+        "search": {
+          "value": ""
+        }
+    })
+
      let getData = async()=>{
-       
         try{
              
-            let resp = await searchCategoryAPI(
-                {
-                    "start": 0,
-                    "Length": 10,
-                    "search": {
-                      "value": ""
-                    }
-                }
-            )
-            setSearchCategory(resp.data)
-                // console.log(searchCategory)
+            let resp = await searchCategoryAPI(searchCategory)
+            console.log(resp.data)
+            setCategoryArr(resp.data)
         }catch (err){
             console.log(err)
         }
@@ -28,11 +26,11 @@ export function Category() {
     useEffect(() =>{
         getData();
         // testPromise()
-    },[])
+    },[searchCategory]) // searchDTO thay đổi thì getData() sẽ được gọi
 
      let handleTextChange = (e) =>{
-        getData()
-        // setSearchDTO
+        setSearchCategory({...searchCategory,[e.taget.name]:e.taget.value})
+        
      }
     return (
         <div>
@@ -45,7 +43,7 @@ export function Category() {
                 <th>Action</th>
             </tr>
             {
-                categories.map(item => {
+                categoryArr.map(item => {
                     return (
                         <tr key={item}>
                             <td>{item.id}</td>
