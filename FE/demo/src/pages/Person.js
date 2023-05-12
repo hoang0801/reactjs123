@@ -1,3 +1,4 @@
+import { Link } from "@mui/material"
 import { useState } from "react"
 
 
@@ -56,7 +57,8 @@ export default function Person() {
                                 <td>{item.id}</td>
                                 <td>{item.name}</td>
                                 <td>{item.gerder}</td>
-                                <td><button type ="button" onClick={() => deletePerson(item.id)}> Delete</button></td>                      
+                                <td><button type ="button" onClick={() => deletePerson(item.id)}> Delete</button></td>   
+                                                  
                             </tr>
 
                            

@@ -6,25 +6,20 @@ export default function Login(){
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
 
-
-
     // let Navigate = useNavigate()
+    
+    // doc doi tuong context, destruction, doi ten ham
+    let {login:logiCtx} = useContext(AuthenContext)
 
-    let login = async ()=>{
-        try{
-            let data = await LoginAPI(username, password)
-            console.log(data);
-            // sudung luu lai token
-            // localStorage.setItem("token", data.accessToken)
-        } catch(err){
-            console.log(err);
+    let login = async () =>{
+        await logiCtx(username, password)
+        Navigate("/dashboard")
+
         }
-        // Navigate("/dashboard")
-    }
-    let handLeChangLogin = (e) =>{
-        setUsername({...username, [e.target.name]:e.target.value})
-        setPassword({...password, [e.target.name]:e.target.value})
-    }
+    // let handLeChangLogin = (e) =>{
+    //     setUsername({...username, [e.target.name]:e.target.value})
+    //     setPassword({...password, [e.target.name]:e.target.value})
+    // }
     return (
         <div className="container">
             <div className="drop">
@@ -32,10 +27,10 @@ export default function Login(){
                     <h2 className='animate__heartBeat' style="left: 20px;">Đăng Nhập</h2>
                     <form action="">
                         <div className="input-box">
-                            <input type="text" name="username" placeholder="Username" />
+                            <input type="text" onChange={(e) = setUsername(e.target.value)} name="username" placeholder="Username" />
                         </div>
                         <div class="input-box">
-                            <input type="password" name="password" placeholder="Password" />
+                            <input type="password"onChange={(e) = setPassword(e.target.value)} name="password" placeholder="Password" />
                         </div>
                         <div class="input-box">
                             <input type="submit" value="Login" href='#' />

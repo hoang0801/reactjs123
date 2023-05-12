@@ -3,30 +3,36 @@ import { useSearchParams } from "react-router-dom";
 
 export const AuthenContext = createContext({
     token:"",
-    setToken:()=>{
-
-    }
+    user:null,
+    login:()=>{}  ,
+    logout:()=>{}  
 })
 
  export function AuthenProvider(children){
-    let[token, setToken] = useState("")
-    let[ user, setUser]= useState(null)
+    let[token, setToken] = useState("")//token jwt
+    let[ user, setUser]= useState(null)// thong tin user dang nhap
 
     let login=(username, password)=>{
         //goi api- await
-        let
+        let token ="123456" // token sau khi goji api
+        // goi api user/me
+         let user={
+            id:1, name: "admin"
+         }
+         setToken(token)
+         setUser(setUser)
 
 
     }
     let logout =()=>{
         setToken("")
-        setUser ("")
+        setUser (null)
     }
 
 
     return <AuthenContext.Provider value={
         {
-            token, setToken
+            token, user, login, logout
 
         }
     }>

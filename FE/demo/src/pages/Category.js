@@ -29,7 +29,8 @@ export function Category() {
     },[searchCategory]) // searchDTO thay đổi thì getData() sẽ được gọi
 
      let handleTextChange = (e) =>{
-        setSearchCategory({...searchCategory,[e.taget.name]:e.taget.value})
+        setSearchCategory({...searchCategory,[e.target.name]:e.target.value})
+        // sai ở đây. target chứ ko phải tcảaget 
         
      }
     return (

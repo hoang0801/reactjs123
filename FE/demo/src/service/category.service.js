@@ -1,4 +1,4 @@
-import { axiosQuiz } from "./axios/Axios";
+import { axiosQuiz } from "../axios/Axios";
 
   export const searchCategoryAPI = async (data) => {
     const config = {
@@ -8,7 +8,46 @@ import { axiosQuiz } from "./axios/Axios";
     }
     return handleRequest(config)
   }
+
+  export const addCategoryAPI = async (category) =>{
+    const config = {
+      url: '/api/admin/category/add',
+      method: 'POST',
+      data
+    }
+    return handleRequest(config)
+    
+  }
+  export const ViewCategoryAPI = async (id) =>{
+    const config = {
+      url: '/api/category/${id}',
+      method: 'GET',
+     
+    }
+    return handleRequest(config)
+  }
+
+  export const UpdateCategoryAPI = async(data) =>{
+    const config = {
+      url: '/api/admin/category/update',
+      method: 'DELETE',
+      data
+    }
+    return handleRequest(config)
+
+  }
+
+  export const deleteCategoryAPI = async (id) => {
+    const config = {
+      url: `/api/admin/category/delete${id}`,
+      method: 'DELETE'
+    }
+    return handleRequest(config)
+  }
+
   
+ 
+
  
   
   const handleRequest = async (config) => {
