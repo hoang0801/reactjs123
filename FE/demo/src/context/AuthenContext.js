@@ -1,39 +1,56 @@
-import { createContext, useState } from "react";
+import { access } from "fs";
+import { createContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { LoginAPI } from "../service/Login.service";
+import { async } from "q";
 
 export const AuthenContext = createContext({
-    token:"",
-    user:null,
-    login:()=>{}  ,
-    logout:()=>{}  
+    isAuthenticated: false,
+    isLoading: true,
+    accessToken:"",
+    setToken:()=>{},
+    logout:()=>{},
+    login: ()=>{}
 })
 
  export function AuthenProvider(children){
-    let[token, setToken] = useState("")//token jwt
-    let[ user, setUser]= useState(null)// thong tin user dang nhap
+    let[accessToken, setToken] = useState("")
+    let[isAuthenticated, setAuthenticated]= useState(false)
+    let[isLoading, setLoading]= useState(true)
 
-    let login=(username, password)=>{
-        //goi api- await
-        let token ="123456" // token sau khi goji api
-        // goi api user/me
-         let user={
-            id:1, name: "admin"
-         }
-         setToken(token)
-         setUser(setUser)
+    useEffect(()=>{
+        if( localStorage.getItem("accessToken")){
+            setAuthenticated(true)
+            setLoading(false)
+            setToken(localStorage.getItem("accessToken"))
+        }else{
+            setAuthenticated(false)
+            setLoading(false)
+        }
 
+    },[])
 
+    const login= async(token)=>{
+        let data = await LoginAPI(username,password);
+        console.log(data);
+        setAuthenticated(true)
+        setLoading(false)
+        
+        setToken(token.accessToken)
+        localStorage.setItem("accessToken", token.accessToken)
     }
-    let logout =()=>{
+    
+    const logout =()=>{
+        setAuthenticated(false)
+        setLoading(false)
         setToken("")
-        setUser (null)
+        
     }
 
 
     return <AuthenContext.Provider value={
         {
-            token, user, login, logout
-
+            isAuthenticated, isLoading , accessToken, login, logout
         }
     }>
         {children}

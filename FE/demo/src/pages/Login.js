@@ -3,19 +3,29 @@ import { useState } from "react"
 import { LoginAPI } from "../service/Login.service";
 
 export default function Login(){
+
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
 
-    // let Navigate = useNavigate()
+    
     
     // doc doi tuong context, destruction, doi ten ham
     let {login:logiCtx} = useContext(AuthenContext)
+    let Navigate = useNavigate()
 
     let login = async () =>{
         await logiCtx(username, password)
-        Navigate("/dashboard")
 
         }
+
+        // try {
+        //     let data = await loginAPI(username,password);
+        //     console.log(data);
+        //     // sử dụng lưu lại token
+        //     localStorage.setIt em("token", data.accessToken);
+        // } catch(err) {
+        //     console.log(err);
+        // }
     // let handLeChangLogin = (e) =>{
     //     setUsername({...username, [e.target.name]:e.target.value})
     //     setPassword({...password, [e.target.name]:e.target.value})

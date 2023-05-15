@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const LoginAPI = async()=>{
-    var urlencoded = new URLSearchParams();
-    urlencoded.append("username", "0123456789");
-    urlencoded.append("password", "123456");
+export const LoginAPI = async(username,password)=>{
+    var urlencoded = new URLSearchParams(username,password);
+    urlencoded.append("username", username);
+    urlencoded.append("password", password);
 
     const config ={
       method: 'post',
