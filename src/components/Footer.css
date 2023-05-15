@@ -1,0 +1,18 @@
+.footer {
+    background-color: #212121;
+    color: #fff;
+    padding: 8px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .icon-footer {
+    margin: 8px;
+    color: white;
+  }
+  .footer p {
+    margin-bottom: 0px;
+    font-size: 14px;
+  }
+  

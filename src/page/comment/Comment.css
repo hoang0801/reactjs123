@@ -1,0 +1,25 @@
+#post-content {
+}
+
+.search-btn {
+    color: blue;
+    border-radius: 4px;
+}
+
+.save-comment {
+    display: block;
+    border-radius: 4px;
+}
+
+#comment-content{
+    
+}
+#description-content{
+    text-align: left;
+}
+
+
+.table-comment {
+    border: 1px solid;
+    text-align: center;
+}
