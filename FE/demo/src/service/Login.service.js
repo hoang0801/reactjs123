@@ -1,11 +1,8 @@
-import axios from "axios";
+import { axiosQuiz } from "../utils/Axios";
 
-export const LoginAPI = async(username,password)=>{
-    var urlencoded = new URLSearchParams(username,password);
-    urlencoded.append("username", username);
-    urlencoded.append("password", password);
+export const LoginAPI = async(data)=>{
 
-    const config ={
+  var config ={
       method: 'post',
       url: '/api/login',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -28,6 +25,3 @@ export const LoginAPI = async(username,password)=>{
       return ({ code: "408", message: error.message })
     }
   }
-
- 
-

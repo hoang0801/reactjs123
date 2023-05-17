@@ -1,4 +1,4 @@
-import { axiosQuiz } from "../axios/Axios";
+import { axiosQuiz } from "../utils/Axios";
 
   export const searchCategoryAPI = async (data) => {
     const config = {

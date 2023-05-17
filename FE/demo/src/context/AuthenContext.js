@@ -1,4 +1,4 @@
-import { access } from "fs";
+// import { access } from "fs";
 import { createContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { LoginAPI } from "../service/Login.service";
@@ -31,12 +31,12 @@ export const AuthenContext = createContext({
     },[])
 
     const login= async(token)=>{
-        let data = await LoginAPI(username,password);
-        console.log(data);
+        console.log(token)
         setAuthenticated(true)
         setLoading(false)
         
         setToken(token.accessToken)
+        //luu token them vao localstorage
         localStorage.setItem("accessToken", token.accessToken)
     }
     
@@ -50,7 +50,11 @@ export const AuthenContext = createContext({
 
     return <AuthenContext.Provider value={
         {
-            isAuthenticated, isLoading , accessToken, login, logout
+            isAuthenticated, 
+            isLoading,
+            accessToken, 
+            login, 
+            logout
         }
     }>
         {children}
