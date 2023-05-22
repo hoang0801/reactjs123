@@ -5,6 +5,7 @@ import { axiosQuiz } from "../../utils/Axios";
 import { AuthenContext } from "../../context/AuthenContext";
 import { Await, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { useAuth } from "../../hook/useAuth";
 
 export default function Login(){
 
@@ -13,7 +14,7 @@ export default function Login(){
     let [password, setPassword] = useState("");
 
     // doc doi tuong context, destruction, doi ten ham
-    let {login:loginCtx} = useContext(AuthenContext)
+    // let {login:loginCtx} = useContext(AuthenContext)
     let navigate = useNavigate()
 
     const onSubmit = async()=>{

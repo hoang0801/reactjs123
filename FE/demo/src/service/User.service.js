@@ -30,7 +30,7 @@ export const ViewUserAPI = async (id) =>{
   export const updateUserAPI = async(data) =>{
     const config = {
       url: '/api/admin/user/update',
-      method: 'DELETE',
+      method: 'POST',
       data
     }
     return handleRequest(config)

@@ -30,7 +30,7 @@ import { axiosQuiz } from "../utils/Axios";
   export const UpdateCategoryAPI = async(data) =>{
     const config = {
       url: '/api/admin/category/update',
-      method: 'DELETE',
+      method: 'POST',
       data
     }
     return handleRequest(config)
