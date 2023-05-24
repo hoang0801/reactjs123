@@ -10,6 +10,10 @@ import {AuthenProvider} from './context/AuthenContext';
 import { useContext } from 'react';
 import  AuthenContext  from './context/AuthenContext';
 import { useNavigate } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+
+
 function App() {
    let [name, setname] = useState("Hoang");
 
@@ -17,6 +21,7 @@ function App() {
     setname(e.target.value)
    }
    return(
+    <Provider store={store}>
    <AuthenProvider> 
       <BrowserRouter>
         <Route path='/login' element={<Login/>}/>
@@ -32,6 +37,7 @@ function App() {
 
       </BrowserRouter>  
    </AuthenProvider> 
+   </Provider>
     )
    }
      function LoginTemplate(){
@@ -39,9 +45,6 @@ function App() {
       let {isAuthenticated, isloading} = useAuth()
       console.log(isAuthenticated)
       console.log(isloading)
-
-
-
      }
 
 
