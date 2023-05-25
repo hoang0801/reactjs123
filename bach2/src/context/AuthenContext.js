@@ -19,7 +19,7 @@ export const getSession = () => {
 
 export const setSessionInLocalStorage = (token) => {
   //console.log("set session");
-  localStorage.setItem("session", JSON.stringify(token));
+  localStorage.setItem("accessToken", JSON.stringify(token));
   // doan nay set cái sesssion nay lam j day, tuong token la set cai accessToken r
   return true;
 };
