@@ -1,7 +1,9 @@
+import { Button, Link } from "@mui/material";
 import { useEffect, useState } from "react";
 import { addUserAPI, deleteUserAPI, searchUserAPI, updateUserAPI } from "../service/userService";
 
 export function User() {
+
   let [userArray, setUserArray] = useState([]);
   let [user, setUser] = useState({
     id: "",
@@ -22,32 +24,37 @@ export function User() {
     try {
       console.log(user);
       let resp = await addUserAPI(user);//awai dung trong ham async
+      console.log(resp.data)
       console.log("tao user thanh cong");
     } catch (err) {
       console.log(err);
     }
   };
-  useEffect(() => {}, [user]);
+  useEffect(() => {
+    setUser()
+
+  }, [user]);
 
   let searchUser = async () => {
     try {
       let resp = await searchUserAPI(search);
       console.log(resp.data);
-      console.log("Search post thành công");
-      setUserArray(resp.data);
+      console.log("Search user thành công");
     } catch (err) {
       console.log(err);
     }
   };
   useEffect(() => {
     if (search)
-      searchUser(), [];
-  }, [search]); // searchDTO thay đổi thì getData() sẽ được gọi
+
+      searchUser();
+  },[search]); // search thay đổi thì getData() sẽ được gọi
 
   let deleteUser = async (id) => {
     try {
       let yes = window.confirm("Are you sure want to delete this item ?");
       let resp = await deleteUserAPI(id); //await dùng trong hàm async 
+      console.log(resp)
       let newArray = userArray.filter(function (item) {
         //Tương đương ((item) => item.id !== id);
         return item.id !== id;
@@ -58,18 +65,18 @@ export function User() {
       console.log(err);
     }
   };
+
   let updateUser = async () => {
     try {
       console.log(user);
-      let resp = await updateUserAPI(category); // await dung trong ham async
+      let resp = await updateUserAPI(user); // await dung trong ham async
       console.log("update data:", resp.data);
       console.log("update user thanh cong");
-      setCategoryArr(resp.data.data);
+      setUserArray(resp.data.data);
     } catch (err) {
       console.log(err);
     }
   };
-
 
   let handleSearchUser = (e) => {
     setSearch({ ...search, [e.target.name]: e.target.value });
@@ -122,3 +129,4 @@ export function User() {
     </div>
   );
 }
+export default User;

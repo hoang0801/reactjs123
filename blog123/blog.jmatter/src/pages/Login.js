@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { LoginAPI } from "../../service/loginService";
+import { LoginAPI } from "../service/loginService";
 
 export default function Login() {
   let navigate = useNavigate();

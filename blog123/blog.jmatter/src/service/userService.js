@@ -1,4 +1,4 @@
-import { axiosQuiz } from "../utils/Axios";
+import { axiosInstance } from "../utils/myAxios";
 
 export const searchUserAPI = async (search) => {
   const config = {
@@ -6,7 +6,7 @@ export const searchUserAPI = async (search) => {
     method: 'POST',
     data: search
   };
-  return handleRequest(config);
+  return handleResponse(config);
 };
 
 export const addUserAPI = async (user) => {
@@ -15,7 +15,7 @@ export const addUserAPI = async (user) => {
     method: 'POST',
     data: user
   };
-  return handleRequest(config);
+  return handleResponse(config);
 
 };
 export const ViewUserAPI = async (id) => {
@@ -24,7 +24,7 @@ export const ViewUserAPI = async (id) => {
     method: 'GET',
 
   };
-  return handleRequest(config);
+  return handleResponse(config);
 };
 
 export const updateUserAPI = async (data) => {
@@ -33,7 +33,7 @@ export const updateUserAPI = async (data) => {
     method: 'POST',
     data
   };
-  return handleRequest(config);
+  return handleResponse(config);
 };
 
 export const deleteUserAPI = async (id) => {
@@ -41,19 +41,25 @@ export const deleteUserAPI = async (id) => {
     url: `/api/admin/user/delete${id}`,
     method: 'DELETE'
   };
-  return handleRequest(config);
+  return handleResponse(config);
 };
 
-const handleRequest = async (config) => {
+const handleResponse = async (config) => {
   try {
-    const resp = await axiosQuiz(config);
-    console.log(resp);
-    return { code: "200", result: resp.data };
+    //console.log("config ",JSON.stringify(config));
+    let response = await axiosInstance(config);
+
+    let result = response.data;
+    return { code: 200, result };
   } catch (error) {
     console.log(error);
-    if (error.response)
-      return { code: error.response.status, result: error.response.data };
 
-    return ({ code: "408", message: error.message });
+    if (error.response) {
+      return { code: error.response.status };
+    } else if (error.request) {
+      return { code: 408 };
+    } else {
+      return { code: 500 };
+    }
   }
 };
