@@ -1,6 +1,7 @@
 import { Button, Link } from "@mui/material";
 import { useEffect, useState } from "react";
-import { addUserAPI, deleteUserAPI, searchUserAPI, updateUserAPI } from "../service/userService";
+import { addUserAPI, deleteUserAPI, searchUserAPI, updateUserAPI } from "../../service/userService";
+
 
 export function User() {
 
@@ -9,6 +10,8 @@ export function User() {
     id: "",
     username: "",
     password: "",
+    phone: " ",
+    address: "",
     enabled: true,
   });
 
@@ -22,45 +25,43 @@ export function User() {
 
   let addUser = async () => {
     try {
+      console.log(1234);
       console.log(user);
       let resp = await addUserAPI(user);//awai dung trong ham async
-      console.log(resp.data)
+
+      console.log(resp.result);
       console.log("tao user thanh cong");
     } catch (err) {
       console.log(err);
     }
   };
-  useEffect(() => {
-    setUser()
-
-  }, [user]);
 
   let searchUser = async () => {
     try {
       let resp = await searchUserAPI(search);
-      console.log(resp.data);
+      console.log(resp.result);
       console.log("Search user thành công");
+      setUserArray(resp.result.data);
     } catch (err) {
       console.log(err);
     }
   };
   useEffect(() => {
     if (search)
-
       searchUser();
-  },[search]); // search thay đổi thì getData() sẽ được gọi
+  }, [search]); // search thay đổi thì getData() sẽ được gọi
 
   let deleteUser = async (id) => {
     try {
       let yes = window.confirm("Are you sure want to delete this item ?");
       let resp = await deleteUserAPI(id); //await dùng trong hàm async 
-      console.log(resp)
+      console.log(resp);
       let newArray = userArray.filter(function (item) {
         //Tương đương ((item) => item.id !== id);
         return item.id !== id;
       });
       console.log("delete thang cong");
-      setUserArray(newArray.data.data);
+      setUserArray(newArray.result.data);
     } catch (err) {
       console.log(err);
     }
@@ -70,9 +71,9 @@ export function User() {
     try {
       console.log(user);
       let resp = await updateUserAPI(user); // await dung trong ham async
-      console.log("update data:", resp.data);
+      console.log("update data:", resp.result);
       console.log("update user thanh cong");
-      setUserArray(resp.data.data);
+      setUserArray(resp.result.data);
     } catch (err) {
       console.log(err);
     }
@@ -83,6 +84,7 @@ export function User() {
   };
   let handleChangeUser = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    console.log(user);
   };
 
   return (
@@ -91,8 +93,10 @@ export function User() {
       <th>Create User</th>
       <form>
         <input name="id" onChange={handleChangeUser} placeholder="ID.." />
-        <input name="username" onChange={handleChangeUser} placeholder="Username.." />
+        <input name="name" onChange={handleChangeUser} placeholder="Name.." />
         <input name="password" onChange={handleChangeUser} placeholder="Password.." />
+        <input name="phone" onChange={handleChangeUser} placeholder="Phone.." />
+        <input name="address" onChange={handleChangeUser} placeholder="Address.." />
         <input name="role" onChange={handleChangeUser} placeholder="Role.." />
         <button type="button" className="save-user" onClick={addUser}> Save </button>
 
@@ -103,7 +107,6 @@ export function User() {
           <tr className="table-user">
             <th className="table-user">ID</th>
             <th className="table-user">Username</th>
-            <th className="table-user">Email</th>
             <th className="table-user">Actions</th>
           </tr>
 
@@ -111,7 +114,7 @@ export function User() {
             return (
               <tr key={item?.id}>
                 <td className="table-user">{item?.id}</td>
-                <td className="table-user">{item?.username}</td>
+                <td className="table-user">{item.name}</td>
                 <td className="table-user">
                   <Button type="button" onClick={() => deleteUser(item.id)}>
                     Delete

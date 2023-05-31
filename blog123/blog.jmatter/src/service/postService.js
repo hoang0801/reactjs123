@@ -1,35 +1,38 @@
 import { axiosInstance } from "../utils/Axios";
 
-export const searchCategoryAPI = async (search) => {
-  let config = {
-    url: '/api/category/search',
+export const searchPostAPI = async (search) => {
+  const config = {
+    url: '/api/post/search',
     method: 'POST',
-    data: search,
+    data: search
   };
   return handleRequest(config);
 };
 
-export const addCategoryAPI = async (category) => {
+export const addPostAPI = async (post) => {
   const config = {
-    url: '/api/admin/category/add',
+    url: '/api/member/post/add',
     method: 'POST',
-    data: category
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    },
+    data: post
   };
   return handleRequest(config);
 
 };
-export const viewCategoryAPI = async (id) => {
+export const ViewPostAPI = async (id) => {
   const config = {
-    url: '/api/category/${id}',
+    url: '/api/post/${id}',
     method: 'GET',
 
   };
   return handleRequest(config);
 };
 
-export const updateCategoryAPI = async (data) => {
+export const updatePostAPI = async (data) => {
   const config = {
-    url: '/api/admin/category/update',
+    url: '/api/admin/post/update',
     method: 'POST',
     data
   };
@@ -37,21 +40,18 @@ export const updateCategoryAPI = async (data) => {
 
 };
 
-export const deleteCategoryAPI = async (id) => {
+export const deletePostAPI = async (id) => {
   const config = {
-    url: `/api/admin/category/delete?id=${id}`,
+    url: `/api/admin/post/delete${id}`,
     method: 'DELETE'
   };
   return handleRequest(config);
 };
 
 
-
-
-
 const handleRequest = async (config) => {
   try {
-    let resp = await axiosInstance(config);
+    const resp = await axiosInstance(config);
     return resp.data;
   } catch (error) {
     console.log(error);

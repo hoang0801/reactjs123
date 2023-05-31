@@ -1,4 +1,4 @@
-import { axiosInstance } from "../utils/myAxios";
+import { axiosInstance } from "../utils/Axios";
 
 export const searchUserAPI = async (search) => {
   const config = {
@@ -38,7 +38,7 @@ export const updateUserAPI = async (data) => {
 
 export const deleteUserAPI = async (id) => {
   const config = {
-    url: `/api/admin/user/delete${id}`,
+    url: `/api/admin/user/delete?id=${id}`,
     method: 'DELETE'
   };
   return handleResponse(config);

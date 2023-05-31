@@ -45,6 +45,7 @@ export function AuthenProvider({ children }) {
 
     setToken(token.accessToken);
     //luu token them vao localstorage
+    console.log(accessToken);
     localStorage.setItem("accessToken", token.accessToken);
   };
 
