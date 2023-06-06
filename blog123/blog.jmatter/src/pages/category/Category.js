@@ -3,9 +3,8 @@ import InfoIcon from '@mui/icons-material/Info';
 import UpdateIcon from '@mui/icons-material/Update';
 import { TextField } from '@mui/material';
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
-import { getCategoryIds, setCategorySearch } from '../../redux/categorySlice';
 import { addCategoryAPI, deleteCategoryAPI, searchCategoryAPI, updateCategoryAPI } from "../../service/categoryService";
 
 
@@ -13,39 +12,39 @@ import { addCategoryAPI, deleteCategoryAPI, searchCategoryAPI, updateCategoryAPI
 export default function Category() {
   let [categoryArr, setCategoryArr] = useState([]);
   let dispatch = useDispatch();
-  // let [category, setCategory] = useState({
-  //   "id": "",
-  //   "name": ""
-  // });
+  let [category, setCategory] = useState({
+    "id": "",
+    "name": ""
+  });
 
-  const { categories, search, error, category } = useSelector((state) => state.category);
-  console.log("categories", JSON.stringify(categories));
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      find();
-    }, 500);
-    return () => clearTimeout(timeout);
-  }, [search]);
+  // const { categories, search, error, category } = useSelector((state) => state.category);
+  // console.log("categories", JSON.stringify(categories));
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     find();
+  //   }, 500);
+  //   return () => clearTimeout(timeout);
+  // }, [search]);
 
-  const find = async () => {
-    dispatch(getCategoryIds());
-  };
+  // const find = async () => {
+  //   dispatch(getCategoryIds());
+  // };
 
-  const handleChange = (e) => {
-    let newSearch = {
-      ...search,
-      start: 0,
-      [e.target.name]: e.target.value
-    };
-    dispatch(setCategorySearch(newSearch));
-  };
-  // let [search, setSearch] = useState({
-  //   "start": 0,
-  //   "Length": 10,
-  //   "search": {
-  //     "value": ""
-  //   }
-  // });
+  // const handleChange = (e) => {
+  //   let newSearch = {
+  //     ...search,
+  //     start: 0,
+  //     [e.target.name]: e.target.value
+  //   };
+  //   dispatch(setCategorySearch(newSearch));
+  // };
+  let [search, setSearch] = useState({
+    "start": 0,
+    "Length": 10,
+    "search": {
+      "value": ""
+    }
+  });
 
   let addCategory = async () => {
     try {
@@ -69,11 +68,11 @@ export default function Category() {
     }
   };
 
-  // useEffect(() => {
-  //   if (search)
-  //     searchCategory();
-  //     // searchDTO thay đổi thì getData() sẽ được gọi
-  // }, [search]); 
+  useEffect(() => {
+    if (search)
+      searchCategory();
+    // searchDTO thay đổi thì getData() sẽ được gọi
+  }, [search]);
 
   let deleteCategory = async (id) => {
     try {
@@ -101,16 +100,16 @@ export default function Category() {
     }
   };
 
-  categoryArr = categories;
+  // categoryArr = categories;
 
 
-  // let handleSearchCategory = (e) => {
-  //   setSearch({ ...search, [e.target.name]: e.target.value });
-  // };
-  // let handleChangCategory = (e) => {
-  //   setCategory({ ...category, [e.target.name]: e.target.value });
-  //   // setCategory({ ...category, [e.target.id]: e.target.value });
-  // };
+  let handleSearchCategory = (e) => {
+    setSearch({ ...search, [e.target.name]: e.target.value });
+  };
+  let handleChangCategory = (e) => {
+    setCategory({ ...category, [e.target.name]: e.target.value });
+    // setCategory({ ...category, [e.target.id]: e.target.value });
+  };
   return (
     <div id="category-content">
       <h1>Categories Management</h1>

@@ -24,7 +24,8 @@ export default function Login() {
     if (code === "200") {
       console.log(result);
       login(result);
-      navigate("/LoginTemplate", { replace: true });
+      // navigate("comment");
+      navigate("/dashboard/users", { replace: true });
     } else {
       toast(`Error: ${code}`, { position: toast.POSITION.TOP_CENTER, type: 'error', theme: 'colored' });
     }

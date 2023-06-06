@@ -1,48 +1,48 @@
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import { Alert, Button, IconButton, MenuItem, Select, TextField } from "@mui/material";
+import { Alert, Button, MenuItem, Select, TextField } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { useError } from "../../hooks/useError";
-import { searchUser, setUserSearch } from "../../redux/userSlice";
-import { deleteUserAPI } from '../../service/userService';
+import { searchPost, setPostSearch } from "../../redux/postSlice";
+import { deletePostAPI } from "../../service/postService";
 
-export default function SearchUser() {
+
+export default function SearchPost() {
   const { showError } = useError();
 
-
-  const { users, recordsFiltered, search, error, user } = useSelector((state) => state.user);
-
+  const { posts, recordsFiltered, search, error } = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(posts.map);
+
     const timeout = setTimeout(() => {
       find();
     }, 500);
     return () => clearTimeout(timeout);
-  }, [search]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search]); // khi redux seearch thay doi, thi se dc goi lai find
 
   const find = async () => {
-    dispatch(searchUser);
+    dispatch(searchPost());
   };
 
-  const hanleChange = (e) => {
+  const handleChange = (e) => {
     let newSearch = {
       ...search,
       start: 0,// reset lai trang dau
-      [e.taget.name]: e.taget.value
+      [e.target.name]: e.target.value
     };
-    dispatch(setUserSearch(newSearch));
+
+    //update thay doi redux search
+    dispatch(setPostSearch(newSearch));
   };
 
   const deleteItem = async (id) => {
-    console.log("delete id", id);
-    let { code } = await deleteUserAPI(id);
+    let { code } = await deletePostAPI(id);
 
     if (code === 200) {
       toast("Thanh cong!!", { position: toast.POSITION.TOP_CENTER, type: 'success', theme: 'colored' });
@@ -57,7 +57,7 @@ export default function SearchUser() {
     start = start < 0 ? 0 : start;
 
     //update thay doi redux search
-    dispatch(setUserSearch({
+    dispatch(setPostSearch({
       ...search,
       start
     }));
@@ -68,23 +68,22 @@ export default function SearchUser() {
 
     //update thay doi redux search
     if (start < recordsFiltered)
-      dispatch(setUserSearch({
+      dispatch(setPostSearch({
         ...search,
         start
       }));
   };
-
   return (
     <div>
-      <h2>Search User</h2>
+      <h2>Search Post</h2>
       <div>
-        <TextField label="Keyword" variant="outlined" name="value" value={search.value} onChange={hanleChange} size='small' />
+        <TextField label="Keyword" variant="outlined" name="keyword" value={search.keyword} onChange={handleChange} size='small' />
 
         <Select size='small'
           value={search.length}
           label="length"
           name="length" defaultValue={search.length}
-          onChange={hanleChange}
+          onChange={handleChange}
         >
           <MenuItem value={5}>5</MenuItem>
           <MenuItem value={10}>10</MenuItem>
@@ -97,40 +96,41 @@ export default function SearchUser() {
         <Button variant="outlined" onClick={next} endIcon={<ArrowForwardIosIcon color="primary" />} size="medium">
           Next
         </Button>
-        <Button variant="outlined" endIcon={<AddOutlinedIcon color="primary" />} component={Link} to={`/dashboard/user/new`} size="medium">
-          Add
-        </Button>
       </div>
 
       <table className="table table-striped">
         <thead>
           <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Role</th>
-            <th>Date</th>
-            <th>Option</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Time Created</th>
+
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {
-            users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.phone}</td>
-                <td>{user.address}</td>
-                <td>{user.createdDate}</td>
-                <td>{user.roles[0].roles}</td>
+            posts?.map(({ id, title, image, description, category, createdBy, createdDate }) => (
+              <tr key={id}>
+                <td>{id}</td>
+                <td>{title}</td>
+                <td>{image}</td>
+                <td>{description}</td>
+                <td>{category.name}</td>
+                <td>{createdBy.username}</td>
+                <td>{createdDate}</td>
                 <td>
-                  <IconButton aria-label="delete" color="primary" onClick={() => deleteItem(user.id)}>
-                    <DeleteIcon />
-                  </IconButton>
-                  <IconButton aria-label="edit" color="primary" component={Link} to={`/dashboard/user/edit/${user.id}`}>
-                    <EditIcon />
-                  </IconButton>
+                  <button className='btn btn-danger' onClick={() => deleteItem(id)}>
+                    <i className="fa-solid fa-trash-can"></i> Delete
+                  </button>
+                  <Link className='btn btn-warning'
+                    to={`/dashboard/post/edit/${id}`}>
+                    <i className="fa-solid fa-pen-to-square"></i> Edit
+                  </Link>
                 </td>
               </tr>
             ))
@@ -141,5 +141,4 @@ export default function SearchUser() {
       {error && <Alert severity="error">Error {error}!</Alert>}
     </div>
   );
-
 }

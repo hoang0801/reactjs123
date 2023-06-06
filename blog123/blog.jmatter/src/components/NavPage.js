@@ -10,13 +10,13 @@ import "./Footer.css";
 
 
 export default function NavigationBar() {
-  const [activeTab, setActiveTab] = useState("Home");
+  const [activeTab, setActiveTab] = useState("");
   let { logout } = useAuth();
   let navigate = useNavigate();
 
   const handleLogoutCLick = () => {
     logout();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -42,8 +42,8 @@ export default function NavigationBar() {
       </div>
 
       <div
-        className={`nav-item ${activeTab === "Home" ? "active" : ""}`}
-        onClick={() => setActiveTab("Home")}
+        className={`nav-item ${activeTab === "" ? "active" : ""}`}
+        onClick={() => setActiveTab("")}
       >
         <HomeNav />
       </div>
@@ -79,12 +79,6 @@ export default function NavigationBar() {
         <LogoutNav />
       </div>
       <div
-        className={`nav-item ${activeTab === "Sign Up" ? "active" : ""}`}
-        onClick={() => setActiveTab("Sign Up")}
-      >
-        <SignUpNav />
-      </div>
-      <div
         id="notification-btn"
         className={`nav-item ${activeTab === "Contact" ? "active" : ""}`}
         onClick={() => setActiveTab("CircleNotificationsIcon")}
@@ -96,13 +90,13 @@ export default function NavigationBar() {
 
   function LogoutNav() {
     return (
-      <Link
-        to="/login"
+      <div
+        // to="/login"
         className={`nav-link ${activeTab === "Logout" ? "active" : ""}`}
-        onClick={handleLogoutCLick}
+        onClick={() => handleLogoutCLick()}
       >
         Logout
-      </Link>
+      </div>
     );
   }
 
@@ -122,11 +116,11 @@ export default function NavigationBar() {
     return (
       <Link
         to="/main"
-        id="home-btn"
+        id="-btn"
         className={`nav-link ${activeTab === "Contact" ? "active" : ""}`}
         onClick={() => setActiveTab("Home")}
       >
-        Home
+
       </Link>
     );
   }

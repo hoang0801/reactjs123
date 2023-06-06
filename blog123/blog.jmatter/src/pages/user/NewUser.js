@@ -1,7 +1,12 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Button, Grid, Stack, TextField, Typography } from '@mui/material';
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import * as Yup from "yup";
 import { useError } from "../../hooks/useError";
+import { addUserAPI } from '../../service/userService';
 
 
 export default function NewUser() {
@@ -29,13 +34,8 @@ export default function NewUser() {
   });
 
   const addNew = async (user) => {
-    //console.log("user add new; ",JSON.stringify(user.birthdate));
-    let formData = new FormData();
-    formData.append('username', `${user.username}`);
-    formData.append('password', `${user.password}`);
-    formData.append('email', `${user.email}`);
-    formData.append('userRoles[0].role', `${user.role}`);
-    let { code } = await createUserAPI(formData);
+    console.log(user);
+    let { code } = await addUserAPI(user);
 
     if (code === 200) {
       toast("Thanh cong!!", { position: toast.POSITION.TOP_CENTER, type: 'success', theme: 'colored' });
@@ -65,31 +65,26 @@ export default function NewUser() {
                 error={errors.name}
                 helperText={errors.name?.message}
               />
-              <TextField label="username" variant="outlined" size="small"
-                {...register("username")}
-                error={errors.username}
-                helperText={errors.username?.message}
-              />
+
               <TextField label="password" variant="outlined" size="small" type="password"
                 {...register("password")}
                 error={errors.password}
                 helperText={errors.password?.message}
               />
-              <TextField label="email" variant="outlined" size="small"
-                {...register("email")}
-                error={errors.email}
-                helperText={errors.email?.message}
+              <TextField label="address" variant="outlined" size="small"
+                {...register("address")}
+                error={errors.address}
+                helperText={errors.address?.message}
               />
-              <TextField label="role" variant="outlined" size="small"
+              <TextField label="roles" variant="outlined" size="small"
                 {...register("role")}
                 error={errors.role}
                 helperText={errors.role?.message}
               />
-              <TextField label="birthdate" variant="outlined" size="small" type="date" id="birthdate" name="birthdate" placeholder="dd/mm/yyyy"
-                min="1997/01/01" max="2030/12/31"
-                {...register("birthdate")}
-                error={errors.birthdate}
-                helperText={errors.birthdate?.message}
+              <TextField label="phone" variant="outlined" size="small"
+                {...register("phone")}
+                error={errors.phone}
+                helperText={errors.phone?.message}
               />
 
               <Button variant="contained" component="label">

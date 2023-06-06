@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { Accessibility, Class, PeopleAlt } from "@mui/icons-material";
+import { Accessibility, Class } from "@mui/icons-material";
 import CategoryIcon from '@mui/icons-material/Category';
 import CommentIcon from '@mui/icons-material/Comment';
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
@@ -32,7 +32,7 @@ export default function SideBar() {
               </ListItemButton>
             </ListItem>
           </NavLink>
-          <NavLink to="/dashboard/userroles" className={classes.link}>
+          {/* <NavLink to="/dashboard/userroles" className={classes.link}>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -41,7 +41,7 @@ export default function SideBar() {
                 <ListItemText primary="UserRole" />
               </ListItemButton>
             </ListItem>
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/dashboard/category/search" className={classes.link}>
             <ListItem disablePadding>
               <ListItemButton>
@@ -58,7 +58,7 @@ export default function SideBar() {
                 <ListItemIcon>
                   <Class />
                 </ListItemIcon>
-                <ListItemText primary="Posts" />
+                <ListItemText primary="Post" />
               </ListItemButton>
             </ListItem>
           </NavLink>

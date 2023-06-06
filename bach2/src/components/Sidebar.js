@@ -1,84 +1,84 @@
-import * as React from 'react';
+import { makeStyles } from '@material-ui/core';
+import { Accessibility, Class, PeopleAlt } from '@mui/icons-material';
+import CategoryIcon from '@mui/icons-material/Category';
+import CommentIcon from '@mui/icons-material/Comment';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Accessibility, Class, CoPresent, Dashboard, PeopleAlt, Quiz, Scoreboard } from '@mui/icons-material';
+import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import {makeStyles} from '@material-ui/core';
-import CategoryIcon from '@mui/icons-material/Category';
-import CommentIcon from '@mui/icons-material/Comment';
 
 const useStyles = makeStyles(theme => ({
-    link:{
-        color:'inherit',
-        textDecoration:'none',
-        '.makeStyles-link-18 active':{
-            backgroundColor:theme.palette.action.selected,
+  link: {
+    color: 'inherit',
+    textDecoration: 'none',
+    '.makeStyles-link-18 active': {
+      backgroundColor: theme.palette.action.selected,
 
-        }
     }
+  }
 }));
 
 export default function SideBar() {
-    const classes = useStyles();
+  const classes = useStyles();
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label="main mailbox folders">
         <List>
           <NavLink to="/dashboard" className={classes.link}>
             <ListItem disablePadding>
-                <ListItemButton>
+              <ListItemButton>
                 <ListItemIcon>
-                    <Accessibility />
+                  <Accessibility />
                 </ListItemIcon>
                 <ListItemText primary="User" />
-                </ListItemButton>
+              </ListItemButton>
             </ListItem>
           </NavLink>
           <NavLink to="/dashboard/userroles" className={classes.link}>
             <ListItem disablePadding>
-                <ListItemButton>
+              <ListItemButton>
                 <ListItemIcon>
-                    <PeopleAlt />
+                  <PeopleAlt />
                 </ListItemIcon>
                 <ListItemText primary="UserRole" />
-                </ListItemButton>
+              </ListItemButton>
             </ListItem>
           </NavLink>
           <NavLink to="/dashboard/category/search" className={classes.link}>
             <ListItem disablePadding>
-                <ListItemButton>
+              <ListItemButton>
                 <ListItemIcon>
-                  <CategoryIcon/>
+                  <CategoryIcon />
                 </ListItemIcon>
                 <ListItemText primary="Categories" />
-                </ListItemButton>
+              </ListItemButton>
             </ListItem>
           </NavLink>
           <NavLink to="/dashboard/post/search" className={classes.link}>
             <ListItem disablePadding>
-                <ListItemButton>
+              <ListItemButton>
                 <ListItemIcon>
-                    <Class />
+                  <Class />
                 </ListItemIcon>
-                <ListItemText primary="Posts" />
-                </ListItemButton>
+                <ListItemText primary="Post" />
+              </ListItemButton>
             </ListItem>
           </NavLink>
           <NavLink to="/dashboard/comment/search" className={classes.link}>
             <ListItem disablePadding>
-                <ListItemButton>
+              <ListItemButton>
                 <ListItemIcon>
-                    <CommentIcon />
+                  <CommentIcon />
                 </ListItemIcon>
                 <ListItemText primary="Comments" />
-                </ListItemButton>
+              </ListItemButton>
             </ListItem>
           </NavLink>
-          
+
 
         </List>
       </nav>

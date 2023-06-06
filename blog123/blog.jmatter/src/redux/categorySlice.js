@@ -53,7 +53,7 @@ export const categorySlice = createSlice({
 export const { setCategorySearch } = categorySlice.actions;
 
 //redux thunk, là hàm trả về 1 hàm bên trong chưa 2 tham số dispatch để gọi khi có dữ liệu từ api trả về, getstate đọc dữ liệu sẵn từ store ra.
-export function getCategoryIds() {
+export function searchCategory() {
   return async (dispatch, getState) => {
     dispatch(categorySlice.actions.startLoading());
 
