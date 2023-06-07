@@ -27,9 +27,9 @@ export default function NewCategory() {
 
   const addNew = async (category) => {
     let { code } = await addCategoryAPI(category);
-
     if (code === 200) {
       toast("Thanh cong!!", { position: toast.POSITION.TOP_CENTER, type: 'success', theme: 'colored' });
+      console.log(1234);
       navigate("/dashboard/category/search");
     }
     else

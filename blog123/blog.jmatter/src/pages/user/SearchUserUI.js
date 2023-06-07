@@ -34,7 +34,9 @@ export default function SearchUser() {
     let newSearch = {
       ...search,
       start: 0,// reset lai trang dau
-      [e.target.name]: e.target.value
+      search: {
+        value: e.target.value
+      }
     };
 
     //update thay doi redux search

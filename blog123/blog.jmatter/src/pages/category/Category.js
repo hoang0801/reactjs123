@@ -115,7 +115,6 @@ export default function Category() {
       <h1>Categories Management</h1>
       <th>Create Category</th>
       <form>
-        <input name="id" onChange={handleChangCategory} placeholder="ID.." />
         <input name="name" onChange={handleChangCategory} placeholder="Name.." />
         <button type="button" className="save-category" onClick={addCategory}>
           Save

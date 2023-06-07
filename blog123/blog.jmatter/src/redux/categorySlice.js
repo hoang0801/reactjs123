@@ -12,12 +12,13 @@ const initialState = {
   error: null,
   search: {
     start: 0,
-    length: 10,
+    length: 100,
     search: {
       value: ''
     }
   }
 };
+
 export const categorySlice = createSlice({
   name: 'category',
   initialState,
@@ -58,20 +59,22 @@ export function searchCategory() {
     dispatch(categorySlice.actions.startLoading());
 
     const { category } = getState(); // doc tu store cua redux
+    // const { search } = category;
 
-    const resp = await searchCategoryAPI({ ...category.search, search: { value: category.search.value } });
-    console.log(resp.data);
+    // const { code, result } = await searchCategoryAPI(search);
+    const { code, result } = await searchCategoryAPI({ ...category.search, search: { value: category.search.search.value } });
+    console.log(result);
 
-    if (resp.code === 200)
-      dispatch(categorySlice.actions.setCategories(resp));
+    if (code === 200)
+      dispatch(categorySlice.actions.setCategories(result));
     else
-      dispatch(categorySlice.actions.setError(resp.code));
+      dispatch(categorySlice.actions.setError(code));
   };
 };
 
 export const viewCategory = (id) =>
   async (dispatch) => {
-    categorySlice.actions.sra();
+    categorySlice.actions.startLoading();
 
     const { code, result } = await viewCategoryAPI(id);
 

@@ -52,7 +52,8 @@ export const deleteCategoryAPI = async (id) => {
 const handleRequest = async (config) => {
   try {
     let resp = await axiosInstance(config);
-    return resp.data;
+    let result = resp.data;
+    return { code: 200, result };
   } catch (error) {
     console.log(error);
     if (error.response)

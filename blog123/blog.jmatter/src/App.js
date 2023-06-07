@@ -7,7 +7,7 @@ import { AuthenProvider } from './context/authenContext';
 import { useAuth } from './hooks/useAuth';
 import MainLayout from './layout/MainLayout';
 import EditCategory from './pages/category/EditCategory';
-import NewCategory from './pages/category/NewSearch';
+import NewCategory from './pages/category/NewCategory';
 import SearchCategory from './pages/category/SearchCategoryUI';
 import NewComment from './pages/comment/NewComment';
 import SearchComment from './pages/comment/SearchCommentUI';

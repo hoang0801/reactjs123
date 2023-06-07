@@ -15,6 +15,7 @@ export default function SearchCategory() {
   const { showError } = useError();
 
   const { categories, recordsFiltered, search, error } = useSelector((state) => state.category);
+  console.log("categories", JSON.stringify(categories));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +34,9 @@ export default function SearchCategory() {
     let newSearch = {
       ...search,
       start: 0,// reset lai trang dau
-      [e.target.name]: e.target.value
+      search: {
+        value: e.target.value
+      }
     };
 
     //update thay doi redux search
@@ -71,7 +74,7 @@ export default function SearchCategory() {
       headerName: 'Actions',
       width: 130,
       renderCell: (list) => {
-        //console.log("editing table", list.row)
+        console.log("editing table", list.row);
         return (<div><IconButton aria-label="edit" color="primary" component={Link} to={`/dashboard/category/edit/${list.row.id}`}><EditIcon /></IconButton>
           <IconButton aria-label="delete" color="primary" onClick={() => deleteItem(list.row.id)}> <DeleteIcon /></IconButton>
         </div>);
@@ -85,7 +88,7 @@ export default function SearchCategory() {
   return (
     <div style={{ height: 400, width: '100%' }}>
       <h2>Categories Details</h2>
-      <TextField label="Keyword" variant="standard" name="value" value={search.value} onChange={handleChange} size='small' />
+      <TextField label="Keyword" variant="standard" name="value" value={search.search.value} onChange={handleChange} size='small' />
       <Button variant="outlined" endIcon={<AddOutlinedIcon color="primary" />} component={Link} to={`/dashboard/category/new`} size="medium">
         Add
       </Button>
