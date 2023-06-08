@@ -14,7 +14,7 @@ import SearchComment from './pages/comment/SearchCommentUI';
 import Login from './pages/login/Login';
 import EditPost from './pages/post/EditPost';
 import NewPost from './pages/post/NewPost';
-import SearchPost from './pages/post/SearchPost';
+import SearchPost from './pages/post/SearchPostUI';
 import { EditUser } from './pages/user/EditUser';
 import NewUser from './pages/user/NewUser';
 import SearchUser from './pages/user/SearchUserUI';

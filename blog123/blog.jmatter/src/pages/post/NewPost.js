@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -10,6 +11,11 @@ import { addPostAPI } from "../../service/postService";
 export default function NewPost() {
   let navigate = useNavigate();
   const { showError } = useError();
+  const [selectedFile, setSelectedFile] = useState();
+  function handleChange(event) {
+    //console.log("file up ",event.target.files[0]);
+    setSelectedFile(event.target.files[0]);
+  }
 
   const NewItemSchema = Yup.object().shape({
     title: Yup.string().required("Required, please enter."),
@@ -29,7 +35,13 @@ export default function NewPost() {
 
   const addNew = async (post) => {
     console.log(post);
-    let { code } = await addPostAPI(post);
+    var formdata = new FormData();
+    formdata.append("title", post.title);
+    formdata.append("description", post.description);
+    formdata.append("imageFile ", selectedFile);
+    formdata.append("categoryId ", post.categoryId);
+
+    let { code } = await addPostAPI(formdata);
     if (code === 200) {
       toast("Thanh cong!!", { position: toast.POSITION.TOP_CENTER, type: 'success', theme: 'colored' });
       navigate("/dashboard/post/search");
@@ -63,16 +75,14 @@ export default function NewPost() {
                 error={errors.description}
                 helperText={errors.description?.message}
               />
-              <TextField label="category" variant="outlined" size="small"
-                {...register("category.id")}
-                error={errors.category}
-                helperText={errors.category?.message}
+              <TextField label="categoryId" variant="outlined" size="small"
+                {...register("categoryId")}
+                error={errors.categoryId}
+                helperText={errors.categoryId?.message}
               />
-              {/* <TextField label="author" variant="outlined" size="small"
-                              {...register("createdBy.id")}
-                              error={errors.createdBy}
-                              helperText={errors.createdBy?.message}
-                          /> */}
+              <Button variant="contained" component="label">
+                <input accept="image/*" multiple type="file" name="file" onChange={handleChange} />
+              </Button>
               <Button variant="outlined" type='submit' >Post</Button>
             </Stack>
           </form>

@@ -1,4 +1,15 @@
-import { searchPost } from "../../redux/postSlice";
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { Button, IconButton, TextField } from "@mui/material";
+import { DataGrid } from '@mui/x-data-grid';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
+import { toast } from "react-toastify";
+import { useError } from "../../hooks/useError";
+import { searchPost, setPostSearch } from "../../redux/postSlice";
+import { deletePostAPI } from "../../service/postService";
 
 export default function SearchPost() {
   const { showError } = useError();
@@ -58,24 +69,20 @@ export default function SearchPost() {
       editable: true
     },
     {
+      field: 'images',
+      headerName: 'Images',
+      //type: 'number',
+      width: 120,
+      editable: true
+    }, 
+    
+    {
       field: 'description',
       headerName: 'Description',
       //type: 'number',
       width: 120,
       editable: true
-    }, {
-      field: 'category.name',
-      headerName: 'Category',
-      //type: 'number',
-      width: 120,
-      editable: true
-    }, {
-      field: 'createdBy.username',
-      headerName: 'Author',
-      //type: 'number',
-      width: 120,
-      editable: true
-    },
+    }, 
     {
       field: 'createdDate',
       headerName: 'Time Created',

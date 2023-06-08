@@ -42,7 +42,6 @@ export default function SearchComment() {
 
   const deleteItem = async (id) => {
     let { code } = await deleteCommentAPI(id);
-
     if (code === 200) {
       toast("Thanh cong!!", { position: toast.POSITION.TOP_CENTER, type: 'success', theme: 'colored' });
       find();
@@ -65,18 +64,13 @@ export default function SearchComment() {
       editable: true
     },
     {
-      field: 'post',
-      headerName: 'Post Title',
+      field: 'userId',
+      headerName: 'userId',
       //type: 'number',
       width: 120,
       editable: true
-    }, {
-      field: 'createdBy.username',
-      headerName: 'Author',
-      //type: 'number',
-      width: 120,
-      editable: true
-    }, {
+    }, 
+    {
       field: 'createdDate',
       headerName: 'Time Created',
       //type: 'number',

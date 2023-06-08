@@ -103,10 +103,8 @@ export default function SearchPost() {
           <tr>
             <th>Id</th>
             <th>Title</th>
+            <th>CategoryID</th>
             <th>Image</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Author</th>
             <th>Time Created</th>
 
             <th>Actions</th>
@@ -114,14 +112,12 @@ export default function SearchPost() {
         </thead>
         <tbody>
           {
-            posts?.map(({ id, title, image, description, category, createdBy, createdDate }) => (
+            posts?.map(({ id, title, image, categoryId, category, createdBy, createdDate }) => (
               <tr key={id}>
                 <td>{id}</td>
                 <td>{title}</td>
                 <td>{image}</td>
-                <td>{description}</td>
-                <td>{category.name}</td>
-                <td>{createdBy.username}</td>
+                <td>{categoryId}</td>
                 <td>{createdDate}</td>
                 <td>
                   <button className='btn btn-danger' onClick={() => deleteItem(id)}>

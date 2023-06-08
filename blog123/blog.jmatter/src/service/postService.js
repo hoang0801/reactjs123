@@ -42,7 +42,7 @@ export const updatePostAPI = async (data) => {
 
 export const deletePostAPI = async (id) => {
   const config = {
-    url: `/api/admin/post/delete${id}`,
+    url: `/api/admin/post/delete?id=${id}`,
     method: 'DELETE'
   };
   return handleRequest(config);
@@ -52,7 +52,8 @@ export const deletePostAPI = async (id) => {
 const handleRequest = async (config) => {
   try {
     const resp = await axiosInstance(config);
-    return resp.data;
+    let result = resp.data;
+    return { code: 200, result };
   } catch (error) {
     console.log(error);
     if (error.response)

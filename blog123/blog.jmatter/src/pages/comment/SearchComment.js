@@ -97,19 +97,19 @@ export default function SearchComment() {
                       <th>Id</th>
                       <th>Content</th>
                       <th>Post Title</th>
-                      <th>Author</th>
+                      <th>UserId</th>
                       <th>Time Created</th>
                       <th>Actions</th>
                   </tr>
               </thead>
               <tbody>
                   {
-                      comments.map(({ id, content, post, createdBy,createdDate}) => (
+                      comments.map(({ id, content, post, userId,createdDate}) => (
                           <tr key={id}>
                               <td>{id}</td>
                               <td>{content}</td>
-                              <td>{post.title}</td>
-                              <td>{createdBy.username}</td>
+                              <td>{userId}</td>
+                  
                               <td>{createdDate}</td>
                               <td>
                                   <button className='btn btn-danger' onClick={() => deleteItem(id)}>
