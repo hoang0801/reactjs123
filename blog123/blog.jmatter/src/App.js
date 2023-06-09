@@ -27,12 +27,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Login />} />
-<<<<<<< HEAD
+
             <Route path='/login' element={<LoginTemplate />}/>
-=======
             <Route path='/login' element={<LoginTemplate />} />
             <Route path='/home' element={<Home />} />
->>>>>>> 8f3fe702c54e8d8f5135380f9c6ecd86b3cf5cb5
+
 
             <Route path="/dashboard" element={<MainLayout />}>
               <Route index element={<Navigate to="/dashboard/users" />} />

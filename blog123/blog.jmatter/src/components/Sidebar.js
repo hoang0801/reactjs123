@@ -32,16 +32,6 @@ export default function SideBar() {
               </ListItemButton>
             </ListItem>
           </NavLink>
-          {/* <NavLink to="/dashboard/userroles" className={classes.link}>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <PeopleAlt />
-                </ListItemIcon>
-                <ListItemText primary="UserRole" />
-              </ListItemButton>
-            </ListItem>
-          </NavLink> */}
           <NavLink to="/dashboard/category/search" className={classes.link}>
             <ListItem disablePadding>
               <ListItemButton>

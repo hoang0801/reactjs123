@@ -1,12 +1,18 @@
 import { Box, Button, Container, Grid, Icon, Typography } from "@mui/material";
 import { useState } from "react";
+import TopBar from "./components/topbar";
+import './home.css';
 
 export default function Home() {
   let [homArray, setHomeArray] = useState([]);
   let [home, setHome] = useState();
   return (
-    <>
+    <div>
+      <from>
+    <Box sx={{margin: 'auto', marginTop: 10,display: 'flex'}}>
+    <Grid container spacing={2}>
       <Container sx={50}>
+      
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h4">
@@ -20,33 +26,37 @@ export default function Home() {
 
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <Box p={2} minHeight={10} borderRadius={3} sx={{ backgroundImage: "url('/images.jpg')" }} >
+            <Box p={2}  borderRadius={3} sx={{ backgroundImage: "url('\cau-cong-vang.jpg')" }} >
               <Typography variant="body4" color={"#FFFFFF"}>
                 WHITE PAPER
               </Typography>
               <Typography variant="h6" color={"#FFFFFF"}>
-                Understanding the
+                Understanding the         
+              </Typography>
+              <Typography variant="h6" color={"#FFFFFF"}>
                 Mobile Delivery Gap
               </Typography>
-              <Button variant="contained">Read the White Paper</Button>
+              <Button  sx={{ mt: 2 }} variant="contained">Read the White Paper</Button>
             </Box>
           </Grid>
 
           <Grid item xs={4}>
-            <Box p={2} minHeight={5} borderRadius={3} sx={{ backgroundImage: "url('/sao_kim_SFLP.jpg')" }} >
+            <Box p={2} borderRadius={3} sx={{ backgroundImage: "url('/sao_kim_SFLP.jpg')" }} >
               <Typography variant="body4" color={"#FFFFFF"}>
                 CASE STUDY
               </Typography>
               <Typography variant="h6" color={"#FFFFFF"}>
                 Building the new
+              </Typography>
+              <Typography variant="h6" color={"#FFFFFF"}>
                 Marketwatch app
               </Typography>
-              <Button sx={{ mt: 2 }} variant="contained" color={"info"} >See the Case Study</Button>
+              <Button sx={{ mt: 2 }} variant="contained"  >See the Case Study</Button>
             </Box>
           </Grid>
 
           <Grid item xs={4}>
-            <Box p={2} borderRadius={3} sx={{ backgroundImage: "url('/tiphu.jpg')" }} >
+            <Box p={2}  borderRadius={3} sx={{ backgroundImage: "url('/tiphu.jpg')" }} >
               <Typography variant="body4" color={"#FFFFFF"}>
                 VIDEO
               </Typography>
@@ -54,16 +64,24 @@ export default function Home() {
                 Using Wed Components
                 Marketwatch app
               </Typography>
-              <Button sx={{ mt: 2 }} variant="outlined" color={"primary"} >Watch the video</Button>
+              <Button sx={{ mt: 2 }} variant="contained"  >Watch the video</Button>
             </Box>
           </Grid>
         </Grid>
+        <Grid sx={{margin: 5}}>
+        <TopBar/>
+      </Grid>
+      
       </Container>
+      </Grid>
+      </Box>
+      </from>
 
 
       {/* ------------------ */}
 
       <Container sx={50}>
+        <div>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Icon />
@@ -72,6 +90,7 @@ export default function Home() {
             </Typography>
           </Grid>
         </Grid>
+        </div>
 
 
         <Grid container spacing={2}>
@@ -82,52 +101,51 @@ export default function Home() {
               sx={{ backgroundImage: "url('/nho.jpg')" }}
             >
               <Typography variant="body4" color={"#FFFFFF"}>
-                WHITE PAPER
+                CASE STUDY
               </Typography>
               <Typography variant="h6" color={"#FFFFFF"}>
-                Understanding the
-                Mobile Delivery Gap
+                Napa Group speeds up development
               </Typography>
-              <Button variant="contained">Read the White Paper</Button>
+              <Button variant="text">READ NOW</Button>
             </Box>
           </Grid>
 
           <Grid item xs={3}>
             <Box p={2} minHeight={10} borderRadius={3} sx={{ backgroundImage: "url('/theduc.jpg')" }} >
               <Typography variant="body4" color={"#FFFFFF"}>
-                WHITE PAPER
+              CASE STUDY
               </Typography>
               <Typography variant="h6" color={"#FFFFFF"}>
                 Understanding the
                 Mobile Delivery Gap
               </Typography>
-              <Button variant="contained">Read the White Paper</Button>
+              <Button variant="text">READ NOW</Button>
             </Box>
           </Grid>
 
           <Grid item xs={3}>
-            <Box p={2} minHeight={10} borderRadius={3} sx={{ backgroundImage: "url('/images.jpg')" }} >
+            <Box p={2} minHeight={10} borderRadius={3} sx={{ backgroundImage: "url('/maybay.jpg')" }} >
               <Typography variant="body4" color={"#FFFFFF"}>
-                WHITE PAPER
+              CASE STUDY
               </Typography>
               <Typography variant="h6" color={"#FFFFFF"}>
                 Understanding the
                 Mobile Delivery Gap
               </Typography>
-              <Button variant="contained">Read the White Paper</Button>
+              <Button variant="text">READ NOW</Button>
             </Box>
           </Grid>
 
           <Grid item xs={3}>
-            <Box p={2} minHeight={10} borderRadius={3} sx={{ backgroundImage: "url('/images.jpg')" }} >
+            <Box p={2} minHeight={10} borderRadius={3} sx={{ backgroundImage: "url('/lexus (2).jpg')" }} >
               <Typography variant="body4" color={"#FFFFFF"}>
-                WHITE PAPER
+              CASE STUDY
               </Typography>
               <Typography variant="h6" color={"#FFFFFF"}>
                 Understanding the
                 Mobile Delivery Gap
               </Typography>
-              <Button variant="contained">Read the White Paper</Button>
+              <Button variant="text">READ NOW</Button>
             </Box>
           </Grid>
         </Grid>
@@ -135,7 +153,7 @@ export default function Home() {
 
 
 
-    </>
+    </div>
   );
 
 

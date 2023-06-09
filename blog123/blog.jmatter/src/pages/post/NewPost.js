@@ -59,7 +59,7 @@ export default function NewPost() {
     <Grid container alignItems={"center"} justifyContent={"center"}>
       <Grid item xs={12} sm={6}>
         <Stack spacing={3}>
-          <Typography variant="h6">
+      <Typography variant="h6">
             Create Post
           </Typography>
           <form onSubmit={handleSubmit(addNew)}>
