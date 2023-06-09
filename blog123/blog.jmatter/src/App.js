@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom
 import './App.css';
 import NavigationBar from './components/NavPage';
 import { AuthenProvider } from './context/authenContext';
+import Home from './homePages/home';
 import { useAuth } from './hooks/useAuth';
 import MainLayout from './layout/MainLayout';
 import EditCategory from './pages/category/EditCategory';
@@ -26,7 +27,12 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Login />} />
+<<<<<<< HEAD
             <Route path='/login' element={<LoginTemplate />}/>
+=======
+            <Route path='/login' element={<LoginTemplate />} />
+            <Route path='/home' element={<Home />} />
+>>>>>>> 8f3fe702c54e8d8f5135380f9c6ecd86b3cf5cb5
 
             <Route path="/dashboard" element={<MainLayout />}>
               <Route index element={<Navigate to="/dashboard/users" />} />

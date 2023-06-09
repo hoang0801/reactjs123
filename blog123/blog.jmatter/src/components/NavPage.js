@@ -41,12 +41,12 @@ export default function NavigationBar() {
         </a>
       </div>
 
-      <div
+      {/* <div
         className={`nav-item ${activeTab === "" ? "active" : ""}`}
         onClick={() => setActiveTab("")}
       >
         <HomeNav />
-      </div>
+      </div> */}
       <div
         className={`nav-item ${activeTab === "About" ? "active" : ""}`}
         onClick={() => setActiveTab("About")}
@@ -112,16 +112,16 @@ export default function NavigationBar() {
     );
   }
 
-  function HomeNav() {
-    return (
-      <Link
-        to="/main"
-        id="-btn"
-        className={`nav-link ${activeTab === "Contact" ? "active" : ""}`}
-        onClick={() => setActiveTab("Home")}
-      >
+  // function HomeNav() {
+  //   return (
+  //     <Link
+  //       to="/main"
+  //       id="-btn"
+  //       className={`nav-link ${activeTab === "Contact" ? "active" : ""}`}
+  //       onClick={() => setActiveTab("Home")}
+  //     >
 
-      </Link>
-    );
-  }
+  //     </Link>
+  //   );
+  // }
 }
