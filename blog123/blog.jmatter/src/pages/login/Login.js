@@ -1,4 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import IconButton from '@mui/material/IconButton';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -33,18 +37,46 @@ export default function Login() {
   return (
     <div>
       <from>
-        <Box sx={{ display: 'flex', justifyContent: "center", alignItems: 'center', flexDirection: 'column', margin: 'auto', marginTop: 5, padding: 3, borderRadius: 5, boxShadow: '5px 5px 10px #ccc', ":hover": { boxShadow: '10px 10px 20px #ccc' } }} maxWidth={400}>
-          <Typography variant="h2" padding={3} textAlign="center">Login</Typography>
+        <Box sx={{ display: 'flex',
+         justifyContent: "center",
+          alignItems: 'center',
+          flexDirection: 'column', 
+          margin: 'auto', 
+          marginTop: 10, 
+          padding: 3, 
+          borderRadius: 5,
+          boxShadow: '6px 6px 10px #ccc', ":hover": {
+          boxShadow: '10px 10px 20px #ccc' } }}
+          maxWidth={400}>
+            <div>
+            <IconButton >
+            <LockOpenIcon sx={{ fontSize: 30 }} />
+            </IconButton>
+            </div>
+          <Typography variant="h4" padding={3} textAlign="center">Login</Typography>
+          <Stack spacing={2}>
+          <TextField  id="filled-password-input"
+          label="UserName"
+          type="username"
+          autoComplete="current-password"
+          variant="filled" 
+          onChange={(e) => setUsername(e.target.value)}  />
+          
+      
+          <TextField  id="filled-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          variant="filled" 
+          onChange={(e) => setPassword(e.target.value)} />
+          </Stack>
           <div>
-            <label>Username</label>
-            <input onChange={(e) => setUsername(e.target.value)} />
+          <FormControlLabel value="female" marginleft ="1" control={<Checkbox />} label="Remember me" />
           </div>
           <div>
-            <label>Password</label>
-            <input onChange={(e) => setPassword(e.target.value)} />
-          </div>
-          <div>
-            <button type='button' onClick={onSubmit}>Login</button>
+          <Button variant="contained" color="info"
+           onClick={onSubmit}>Login</Button>
+           
           </div>
         </Box>
       </from>

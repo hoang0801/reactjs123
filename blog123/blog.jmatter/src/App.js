@@ -26,9 +26,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Login />} />
-            <Route path='/login' element={<LoginTemplate />}>
+            <Route path='/login' element={<LoginTemplate />}/>
 
-            </Route>
             <Route path="/dashboard" element={<MainLayout />}>
               <Route index element={<Navigate to="/dashboard/users" />} />
               <Route path="users" element={<SearchUser />} />
