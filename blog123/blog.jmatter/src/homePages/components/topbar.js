@@ -6,27 +6,10 @@ import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFil
 import { Box, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack } from "@mui/material";
 
 
-export default function TopBar(){
-
-
+  export default function TopBar(){
    return (
     <Box>
     <Stack direction="row" spacing={2}>
-    {/* <Typography variant="h1" component="h2">
-      Featured
-    </Typography>
-    <Typography variant="h1" component="h2">
-  Articles
-</Typography>
-<Typography variant="h1" component="h2">
-  Case Studies
-</Typography>
-<Typography variant="h1" component="h2">
-  WebInars
-</Typography>
-<Typography variant="h1" component="h2">
-  Video
-</Typography> */}
 <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -59,7 +42,7 @@ export default function TopBar(){
                 <ListItemIcon>
                   <KebabDiningOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary="WebInarss" />
+                <ListItemText primary="Webinars" />
               </ListItemButton>
             </ListItem>
 
@@ -75,5 +58,6 @@ export default function TopBar(){
     </Stack>
     </Box>
    )
+  
     
 }

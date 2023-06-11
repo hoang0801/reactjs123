@@ -1,6 +1,7 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { AppBar, Box, Button, Container, Grid, IconButton, Toolbar, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { useState } from "react";
+import Header from './components/Header';
 import TopBar from "./components/topbar";
 import './home.css';
 
@@ -13,7 +14,15 @@ export default function Home() {
   return (
     <div>
       <from >
-    <Box sx={{margin: 'auto', marginTop: 10,display: 'flex'}}>
+      <Box sx={{marginRight: 20,
+         marginLeft :20, 
+        
+         display: 'flex'}}>
+           <Header/>
+           </Box>
+
+    <Box sx={{margin: 'auto', marginTop: 3,display: 'flex'}}>
+   
     <Grid container spacing={2}>
       <Container sx={50}>
       
@@ -72,9 +81,9 @@ export default function Home() {
             </Box>
           </Grid>
         </Grid>
-        <Grid sx={{margin: 5}}>
+        <Box sx={{margin: 5}}>
         <TopBar/>
-      </Grid>
+      </Box>
       
       </Container>
       </Grid>
@@ -86,42 +95,20 @@ export default function Home() {
 
       <Container sx={50}>
        
-        <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            {/* <MenuIcon /> */}
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
-    
+       
         <Grid container spacing={2}>
-          <Grid item xs={8}>
+          <Grid item xs={10}>
           
             <Typography variant="h4">
               Featured Case Studies
             </Typography>
           </Grid>
-          <Grid item xs={4}>
-            <Button >
-            
+          <Grid  item xs={2}>
+            <Button sx={{marginRight: 7}} >
             <Typography variant="h6">
               See all
             </Typography>
-            <IconButton>
-<ArrowForwardIcon/>
-            </IconButton>
+             <ArrowForwardIcon/>
             </Button>
             </Grid>
         </Grid>
