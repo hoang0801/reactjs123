@@ -70,14 +70,14 @@ export default function Login() {
           variant="filled" 
           onChange={(e) => setPassword(e.target.value)} />
           </Stack>
-          <div>
-          <FormControlLabel value="female" marginleft ="1" control={<Checkbox />} label="Remember me" />
-          </div>
-          <div>
+       
+          <FormControlLabel control={<Checkbox />} label="Remember me" />
+          
+          
           <Button variant="contained" color="info"
            onClick={onSubmit}>Login</Button>
            
-          </div>
+        
         </Box>
       </from>
     </div>
