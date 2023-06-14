@@ -1,5 +1,6 @@
-import MenuIcon from "@mui/icons-material/Menu";
-import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
+import { Button, Container, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
@@ -7,33 +8,86 @@ import { useAuth } from "../hooks/useAuth";
 
 
 export default function Header() {
-  //const dispatch = useDispatch();
+
+  const [activeTab, setActiveTab] = useState("");
   let { logout } = useAuth();
   let navigate = useNavigate();
 
   const handleLogoutCLick = () => {
     logout();
-    navigate("/login");
+    navigate("/");
   };
+
+
+
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Blog Management
-          </Typography>
-          <Button color="inherit" onClick={handleLogoutCLick}>Logout</Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <>
+      <Container sx={{ margin: '' }} >
+        <Stack direction="row" spacing={2}>
+          <Stack direction="row" spacing={1}>
+            <ListItem disablePadding>
+              <Button>
+                <AdjustOutlinedIcon />
+                <ListItemText fon primary="IONIC" />
+              </Button>
+            </ListItem>
+
+            <Stack direction="row" spacing={1}>
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="Framework" />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="Products" />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="Developers " />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="Businesses" />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="Suport" />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="Resources" />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="Pricing" />
+                </ListItemButton>
+              </ListItem>
+            </Stack>
+
+            <ListItem disablePadding>
+              <Button variant="contained" onClick={handleLogoutCLick}>
+                log out
+
+              </Button>
+            </ListItem>
+          </Stack>
+
+        </Stack>
+      </Container>
+    </>
+
   );
 }

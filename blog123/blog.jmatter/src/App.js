@@ -2,7 +2,6 @@ import { LinearProgress } from '@mui/material';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
-import NavigationBar from './components/NavPage';
 import { AuthenProvider } from './context/authenContext';
 import Home from './homePages/home';
 import { useAuth } from './hooks/useAuth';
@@ -26,13 +25,10 @@ function App() {
       <AuthenProvider>
         <BrowserRouter>
           <Routes>
-            <Route index element={<Login />} />
+            <Route index element={<Home />} />
 
-            <Route path='/login' element={<LoginTemplate />}/>
+            <Route path='/' element={<Login />} />
             <Route path='/login' element={<LoginTemplate />} />
-            <Route path='/home' element={<Home />} />
-
-
             <Route path="/dashboard" element={<MainLayout />}>
               <Route index element={<Navigate to="/dashboard/users" />} />
               <Route path="users" element={<SearchUser />} />
@@ -50,9 +46,10 @@ function App() {
               <Route path="comment/search" element={<SearchComment />} />
               <Route path="comment/new" element={<NewComment />} />
 
+
             </Route>
 
-
+            {/* <Route path="/" element={<Navigate to="/login" />} /> */}
             {/* <Route index element={<Login />} /> */}
             {/* <Route path="/categories" element={<Category />} />
           <Route path="/user" element={<User />} />
@@ -86,7 +83,7 @@ function LoginTemplate() {
 
   return (<>
     {/* <MainLayout /> */}
-    <NavigationBar />
+    <Login />
     <Outlet />
 
   </>);
