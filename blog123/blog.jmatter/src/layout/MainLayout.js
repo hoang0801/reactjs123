@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import { Box, LinearProgress } from "@mui/material";
 import { Navigate, Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
-import NavigationBar from "../components/NavPage";
+import Header from "../components/Header";
 import SideBar from "../components/Sidebar";
 import { useAuth } from "../hooks/useAuth";
 
@@ -47,7 +47,7 @@ const MainLayout = () => {
   if (isAuthenticated)
     return (<Box className={classes.root}>
       {/* <Box className={classes.header}><Header /></Box> */}
-      <Box className={classes.header}><NavigationBar /></Box>
+      <Box className={classes.header}><Header /></Box>
       <Box className={classes.sidebar}><SideBar /></Box>
       <Box className={classes.footer}><Footer /></Box>
       <Box className={classes.main}>

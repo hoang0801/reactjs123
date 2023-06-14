@@ -28,8 +28,8 @@ export default function Login() {
     if (code === "200") {
       console.log(result);
       login(result);
-      navigate("/home");
-      // navigate("/dashboard/users", { replace: true });
+      // navigate("/home");
+      navigate("/dashboard/users", { replace: true });
     } else {
       toast(`Error: ${code}`, { position: toast.POSITION.TOP_CENTER, type: 'error', theme: 'colored' });
     }
@@ -37,47 +37,50 @@ export default function Login() {
   return (
     <div>
       <from>
-        <Box sx={{ display: 'flex',
-         justifyContent: "center",
+        <Box sx={{
+          display: 'flex',
+          justifyContent: "center",
           alignItems: 'center',
-          flexDirection: 'column', 
-          margin: 'auto', 
-          marginTop: 10, 
-          padding: 3, 
+          flexDirection: 'column',
+          margin: 'auto',
+          marginTop: 10,
+          padding: 3,
           borderRadius: 5,
           boxShadow: '6px 6px 10px #ccc', ":hover": {
-          boxShadow: '10px 10px 20px #ccc' } }}
+            boxShadow: '10px 10px 20px #ccc'
+          }
+        }}
           maxWidth={400}>
-            <div>
+          <div>
             <IconButton >
-            <LockOpenIcon sx={{ fontSize: 30 }} />
+              <LockOpenIcon sx={{ fontSize: 30 }} />
             </IconButton>
-            </div>
+          </div>
           <Typography variant="h4" padding={3} textAlign="center">Login</Typography>
           <Stack spacing={2}>
-          <TextField  id="filled-password-input"
-          label="UserName"
-          type="username"
-          autoComplete="current-password"
-          variant="filled" 
-          onChange={(e) => setUsername(e.target.value)}  />
-          
-      
-          <TextField  id="filled-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="filled" 
-          onChange={(e) => setPassword(e.target.value)} />
+            <TextField id="filled-password-input"
+              label="UserName"
+              type="username"
+              autoComplete="current-password"
+              variant="filled"
+              onChange={(e) => setUsername(e.target.value)} />
+
+
+            <TextField id="filled-password-input"
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              variant="filled"
+              onChange={(e) => setPassword(e.target.value)} />
           </Stack>
-       
+
           <FormControlLabel control={<Checkbox />} label="Remember me" />
-          
-          
+
+
           <Button variant="contained" color="info"
-           onClick={onSubmit}>Login</Button>
-           
-        
+            onClick={onSubmit}>Login</Button>
+
+
         </Box>
       </from>
     </div>
