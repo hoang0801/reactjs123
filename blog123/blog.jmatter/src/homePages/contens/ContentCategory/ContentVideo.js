@@ -2,14 +2,14 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import { Box, Button, Grid, Typography } from "@mui/material";
 
 
-export default function Content2() {
+export default function ContentVideo() {
   return (
     <Box>
       <Grid container spacing={2}>
         <Grid item xs={10}>
 
           <Typography variant="h4">
-            Featured Case Studies
+          Video Case Studies
           </Typography>
         </Grid>
         <Grid item xs={2}>
@@ -30,7 +30,7 @@ export default function Content2() {
             borderRadius={3}
             sx={{ backgroundImage: "url('/nho.jpg')" }}
           >
-            <Typography variant="body4" color={"#FFFFFF"}>
+            <Typography variant="body2" color={"#757575"}>
               CASE STUDY
             </Typography>
             <Typography variant="h6" color={"#FFFFFF"}>
@@ -42,7 +42,7 @@ export default function Content2() {
 
         <Grid item xs={3}>
           <Box p={2} minHeight={10} borderRadius={3} sx={{ backgroundImage: "url('/theduc.jpg')" }} >
-            <Typography variant="body4" color={"#FFFFFF"}>
+            <Typography variant="body2" color={"#757575"}>
               CASE STUDY
             </Typography>
             <Typography variant="h6" color={"#FFFFFF"}>
@@ -55,7 +55,7 @@ export default function Content2() {
 
         <Grid item xs={3}>
           <Box p={2} minHeight={10} borderRadius={3} sx={{ backgroundImage: "url('/maybay.jpg')" }} >
-            <Typography variant="body4" color={"#FFFFFF"}>
+            <Typography variant="body2" color={"#757575"}>
               CASE STUDY
             </Typography>
             <Typography variant="h6" color={"#FFFFFF"}>
@@ -68,7 +68,7 @@ export default function Content2() {
 
         <Grid item xs={3}>
           <Box p={2} minHeight={10} borderRadius={3} sx={{ backgroundImage: "url('/lexus (2).jpg')" }} >
-            <Typography variant="body4" color={"#FFFFFF"}>
+            <Typography variant="body2" color={"#757575"}>
               CASE STUDY
             </Typography>
             <Typography variant="h6" color={"#FFFFFF"}>
@@ -83,4 +83,7 @@ export default function Content2() {
     </Box>
 
   );
-}
+} 
+
+
+
