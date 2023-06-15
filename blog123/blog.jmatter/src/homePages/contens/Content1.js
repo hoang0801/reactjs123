@@ -1,12 +1,14 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function Content1() {
+
   return (
 
     <Grid container spacing={2}>
       <Container sx={50}>
 
-        <Grid container spacing={2}>
+        <Grid container spacing={4}>
           <Grid item xs={12}>
             <Typography variant="h4">
               Resource Center
@@ -17,7 +19,7 @@ export default function Content1() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} sx={{ marginTop: 2 }}>
+        <Grid container spacing={7} sx={{ marginTop: 2 }}>
           <Grid item xs={4}>
             <Box p={2} borderRadius={3}
               sx={{
@@ -32,7 +34,7 @@ export default function Content1() {
                 Understanding the
                 Mobile Delivery Gap
               </Typography>
-              <Button marginTop={4} sx={{ mt: 2, bgcolor: '#FFFFFF' }} variant="contained">
+              <Button component={Link} to={`/tintuc`} sx={{ mt: 2, bgcolor: '#FFFFFF' }} variant="contained">
                 <Typography variant="body" color={"#424242"}>
                   Read the White Paper
                 </Typography>

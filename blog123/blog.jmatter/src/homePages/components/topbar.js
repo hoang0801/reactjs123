@@ -21,31 +21,28 @@ export default function TopBar() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <>
-    
-      <Box sx={{  width: '100%', typography: 'body1' }}>
-        
+      <Box sx={{ width: '100%', typography: 'body1' }}>
+
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Container  maxWidth='md'>
-            <TabList   onChange={handleChange}>
-              <Tab label="Featured" icon={<LibraryBooksOutlinedIcon />} iconPosition="start" value="1" />
-              <Tab label="Articles" icon={<FeedOutlinedIcon />} iconPosition="start" value="2" />
-              <Tab label="Case Studies"icon={<PagesOutlinedIcon />}iconPosition="start" value="3" />
-              <Tab label="Video"icon={<PlayCircleFilledWhiteOutlinedIcon />} iconPosition="start" value="4" />
-            </TabList>
+            <Container maxWidth='md'>
+              <TabList onChange={handleChange}>
+                <Tab label="Featured" icon={<LibraryBooksOutlinedIcon />} iconPosition="start" value="1" />
+                <Tab label="Articles" icon={<FeedOutlinedIcon />} iconPosition="start" value="2" />
+                <Tab label="Case Studies" icon={<PagesOutlinedIcon />} iconPosition="start" value="3" />
+                <Tab label="Video" icon={<PlayCircleFilledWhiteOutlinedIcon />} iconPosition="start" value="4" />
+              </TabList>
             </Container>
-           
           </Box>
-          <TabPanel value="1"><ContentFeatured/></TabPanel>
-          <TabPanel value="2"><ContentArticles/></TabPanel>
-          <TabPanel value="3"><ContentCaseStudies/></TabPanel>
-          <TabPanel value="4"><ContentVideo/></TabPanel>
+          <TabPanel value="1"><ContentFeatured></ContentFeatured></TabPanel>
+          <TabPanel value="2"><ContentArticles /></TabPanel>
+          <TabPanel value="3"><ContentCaseStudies /></TabPanel>
+          <TabPanel value="4"><ContentVideo /></TabPanel>
         </TabContext>
       </Box>
     </>
-  )
-  }
+  );
+}
 

@@ -23,7 +23,7 @@ export default function Header() {
 
   return (
     <>
-      <Container sx={{ margin: '' }} >
+      <Container >
         <Stack direction="row" spacing={2}>
           <Stack direction="row" spacing={1}>
             <ListItem disablePadding>
@@ -80,7 +80,6 @@ export default function Header() {
             <ListItem disablePadding>
               <Button variant="contained" onClick={handleLogoutCLick}>
                 log out
-
               </Button>
             </ListItem>
           </Stack>

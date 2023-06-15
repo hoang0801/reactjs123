@@ -124,17 +124,17 @@ export default function Category() {
         <TextField label="Keyword" variant="standard" name="value" value={search.value} onChange={handleChange} size='small' />
 
         <table>
-          <tr className="table-category">
-            <th className="table-category">ID</th>
-            <th className="table-category">Name</th>
+          <tr>
+            <th >ID</th>
+            <th >Name</th>
           </tr>
 
           {categoryArr?.map((item) => {
             return (
               <tr key={item?.id}>
-                <td className="table-category">{item?.id}</td>
-                <td className="table-category">{item?.name}</td>
-                <td className="table-category">
+                <td>{item?.id}</td>
+                <td >{item?.name}</td>
+                <td>
                   <DeleteIcon type="button" onClick={() => deleteCategory(item.id)} />
                   <UpdateIcon type="button" onClick={() => updateCategory(item.id)} />
                   <Link to={`/hello/${item.name}`}><InfoIcon /></Link>

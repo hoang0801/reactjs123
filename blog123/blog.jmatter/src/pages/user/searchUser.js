@@ -94,9 +94,11 @@ export default function SearchUser() {
         <Button variant="outlined" onClick={back} startIcon={<ArrowBackIosIcon color="primary" />} size="medium">
           Previous
         </Button>
+
         <Button variant="outlined" onClick={next} endIcon={<ArrowForwardIosIcon color="primary" />} size="medium">
           Next
         </Button>
+
         <Button variant="outlined" endIcon={<AddOutlinedIcon color="primary" />} component={Link} to={`/dashboard/user/new`} size="medium">
           Add
         </Button>

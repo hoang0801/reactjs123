@@ -16,11 +16,11 @@ export default function TopBar1() {
 
 
     < Box >
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={-1}>
         <ListItem disablePadding>
           <Button>
             <AdjustOutlinedIcon />
-            <ListItemText fon primary="IONIC" />
+            <ListItemText primary="IONIC" />
           </Button>
         </ListItem>
 

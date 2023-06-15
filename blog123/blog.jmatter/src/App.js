@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { AuthenProvider } from './context/authenContext';
+import Tintuc from './homePages/contens/tt';
 import Home from './homePages/home';
 import { useAuth } from './hooks/useAuth';
 import MainLayout from './layout/MainLayout';
@@ -26,6 +27,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
+            <Route path='/tintuc/' element={<Tintuc />} />
 
             <Route path='/' element={<Login />} />
             <Route path='/login' element={<LoginTemplate />} />

@@ -9,7 +9,7 @@ export default function ContentVideo() {
         <Grid item xs={10}>
 
           <Typography variant="h4">
-          Video Case Studies
+            Video
           </Typography>
         </Grid>
         <Grid item xs={2}>
@@ -83,7 +83,7 @@ export default function ContentVideo() {
     </Box>
 
   );
-} 
+}
 
 
 
