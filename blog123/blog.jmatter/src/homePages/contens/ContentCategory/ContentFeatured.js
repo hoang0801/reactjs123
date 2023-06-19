@@ -1,11 +1,11 @@
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import { Box, Button, Grid, Typography } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 export default function ContentFeatured() {
 
 
-}
-  function Featured(){
+
   return (
     <Box>
       <Grid container spacing={2}>
@@ -39,7 +39,7 @@ export default function ContentFeatured() {
             <Typography variant="h6" color={"#FFFFFF"}>
               Napa Group speeds up development
             </Typography>
-            <Button variant="text">READ NOW</Button>
+            <Button  component={Link} to={`/tintuc`} variant="text">READ NOW</Button>
           </Box>
         </Grid>
 

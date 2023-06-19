@@ -36,7 +36,7 @@ export default function TopBar() {
               </TabList>
             </Container>
           </Box>
-          <TabPanel value="1"><ContentFeatured></ContentFeatured></TabPanel>
+          <TabPanel value="1"><ContentFeatured/></TabPanel>
           <TabPanel value="2"><ContentArticles /></TabPanel>
           <TabPanel value="3"><ContentCaseStudies /></TabPanel>
           <TabPanel value="4"><ContentVideo /></TabPanel>
