@@ -11,7 +11,7 @@ const initialState = {
   search: {
     start: 0,
     length: 10,
-    keyword: ''
+    categoryId: ''
   }
 };
 

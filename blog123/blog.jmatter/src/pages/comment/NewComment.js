@@ -26,6 +26,7 @@ export default function NewComment() {
   });
 
   const addNew = async (comment) => {
+    console.log(1234)
     let { code } = await addCommentAPI(comment);
 
     if (code === 200) {

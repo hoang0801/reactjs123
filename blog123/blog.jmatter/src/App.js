@@ -3,7 +3,9 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { AuthenProvider } from './context/authenContext';
-import Tintuc from './homePages/contens/tt';
+
+import ThongTin from './homePages/contens/tt/NCĐH';
+import Tintuc from './homePages/contens/tt/tt';
 import Home from './homePages/home';
 import { useAuth } from './hooks/useAuth';
 import MainLayout from './layout/MainLayout';
@@ -28,6 +30,7 @@ function App() {
           <Routes>
             <Route index element={<Home />} />
             <Route path='/tintuc/' element={<Tintuc />} />
+            <Route path='/thongtin/' element={<ThongTin />} />
 
             <Route path='/' element={<Login />} />
             <Route path='/login' element={<LoginTemplate />} />
@@ -39,7 +42,7 @@ function App() {
 
               <Route path="category/search" element={<SearchCategory />} />
               <Route path="category/new" element={<NewCategory />} />
-              <Route path="categor/edit/:id" element={<EditCategory />} />
+              <Route path="category/edit/:id" element={<EditCategory />} />
 
               <Route path="post/search" element={<SearchPost />} />
               <Route path="post/new" element={<NewPost />} />

@@ -112,7 +112,6 @@ export default function Comment() {
             <th className="table-comment">ID</th>
             <th className="table-comment">Comment</th>
             <th className="table-comment">Post ID</th>
-            <th className="table-comment">Author</th>
             <th className="table-comment">Date Created</th>
             <th className="table-comment">Actions</th>
           </tr>
@@ -121,8 +120,7 @@ export default function Comment() {
             return (
               <tr key={item?.id}>
                 <td className="table-comment">{item?.id}</td>
-                <td className="table-comment" id="description-content">
-                  {item?.content}
+                <td className="table-comment" id="description-content">{item?.content}
                 </td>
                 <td className="table-comment">{item?.post.id}</td>
                 <td className="table-comment">{item?.createdBy.username}</td>

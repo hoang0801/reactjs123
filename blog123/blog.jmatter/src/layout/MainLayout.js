@@ -46,7 +46,7 @@ const MainLayout = () => {
 
   if (isAuthenticated)
     return (<Box className={classes.root}>
-      {/* <Box className={classes.header}><Header /></Box> */}
+    
       <Box className={classes.header}><Header /></Box>
       <Box className={classes.sidebar}><SideBar /></Box>
       <Box className={classes.footer}><Footer /></Box>

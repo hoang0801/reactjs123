@@ -78,12 +78,21 @@ export default function SearchComment() {
       editable: true
     },
     {
+      field: 'postId ',
+      headerName: 'postId ',
+      //type: 'number',
+      width: 120,
+      editable: true
+    },
+    {
       field: 'actions',
       headerName: 'Actions',
       width: 130,
       renderCell: (list) => {
         //console.log("editing table", list.row)
-        return (<div><IconButton aria-label="edit" color="primary" component={Link} to={`/dashboard/comment/edit/${list.row.id}`}><EditIcon /></IconButton>
+        return (
+        <div>
+          <IconButton aria-label="edit" color="primary" component={Link} to={`/dashboard/comment/edit/${list.row.id}`}><EditIcon /></IconButton>
           <IconButton aria-label="delete" color="primary" onClick={() => deleteItem(list.row.id)}> <DeleteIcon /></IconButton>
         </div>);
       }
