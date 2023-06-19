@@ -57,7 +57,7 @@ export default function Content1() {
               <Typography variant="h6" color={"#FFFFFF"} >
                 Marketwatch app
               </Typography>
-              <Button component={Link} to={`/thongtin`}  sx={{ mt: 2, bgcolor: '#FFFFFF' }} variant="contained">
+              <Button component={Link} to={`/thongtin`} sx={{ mt: 2, bgcolor: '#FFFFFF' }} variant="contained">
                 <Typography variant="body" color={"#424242"}>
                   See the Case Study
                 </Typography>

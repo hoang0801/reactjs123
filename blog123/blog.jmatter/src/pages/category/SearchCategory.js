@@ -17,7 +17,6 @@ export default function SearchCategory() {
       find();
     }, 500);
     return () => clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]); // khi redux seearch thay doi, thi se dc goi lai find
 
   const find = async () => {
@@ -105,7 +104,7 @@ export default function SearchCategory() {
           {
             categories.map(({ id, name }) => (
               <tr key={id}>
-                <td>{id}</td>
+                <td>{i}</td>
                 <td>{name}</td>
                 <td>
                   <button className='btn btn-danger' onClick={() => deleteItem(id)}>

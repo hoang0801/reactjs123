@@ -38,15 +38,13 @@ const useStyles = makeStyles(theme => ({
 
 const MainLayout = () => {
   const classes = useStyles();
-
   let { isAuthenticated, isLoading } = useAuth();
-
   if (isLoading)
     return <LinearProgress />;
 
   if (isAuthenticated)
     return (<Box className={classes.root}>
-    
+      {/* <Box className={classes.header}><Header /></Box> */}
       <Box className={classes.header}><Header /></Box>
       <Box className={classes.sidebar}><SideBar /></Box>
       <Box className={classes.footer}><Footer /></Box>
@@ -54,7 +52,6 @@ const MainLayout = () => {
         <Outlet />
       </Box>
     </Box>);
-
   return <Navigate to={"/login"} />;
 };
 

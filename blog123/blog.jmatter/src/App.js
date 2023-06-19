@@ -5,7 +5,7 @@ import './App.css';
 import { AuthenProvider } from './context/authenContext';
 
 import ThongTin from './homePages/contens/tt/NCĐH';
-import Tintuc from './homePages/contens/tt/tt';
+import Tintuc from './homePages/contens/tt/TinTuc';
 import Home from './homePages/home';
 import { useAuth } from './hooks/useAuth';
 import MainLayout from './layout/MainLayout';
@@ -17,6 +17,7 @@ import SearchComment from './pages/comment/SearchCommentUI';
 import Login from './pages/login/Login';
 import EditPost from './pages/post/EditPost';
 import NewPost from './pages/post/NewPost';
+import { Post } from './pages/post/Post';
 import SearchPost from './pages/post/SearchPostUI';
 import { EditUser } from './pages/user/EditUser';
 import NewUser from './pages/user/NewUser';
@@ -29,8 +30,13 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
+            <Route path='/client/' element={<Home />} />
             <Route path='/tintuc/' element={<Tintuc />} />
             <Route path='/thongtin/' element={<ThongTin />} />
+            <Route path="/post" element={<Post />} />
+
+
+
 
             <Route path='/' element={<Login />} />
             <Route path='/login' element={<LoginTemplate />} />
@@ -42,7 +48,7 @@ function App() {
 
               <Route path="category/search" element={<SearchCategory />} />
               <Route path="category/new" element={<NewCategory />} />
-              <Route path="category/edit/:id" element={<EditCategory />} />
+              <Route path="categor/edit/:id" element={<EditCategory />} />
 
               <Route path="post/search" element={<SearchPost />} />
               <Route path="post/new" element={<NewPost />} />
@@ -52,13 +58,14 @@ function App() {
               <Route path="comment/new" element={<NewComment />} />
 
 
+
             </Route>
 
             {/* <Route path="/" element={<Navigate to="/login" />} /> */}
             {/* <Route index element={<Login />} /> */}
             {/* <Route path="/categories" element={<Category />} />
           <Route path="/user" element={<User />} />
-          <Route path="/post" element={<Post />} /> */}
+          // <Route path="/post" element={<Post />} /> */}
             {/* <Route path="/comment" element={<Comment />} /> */}
 
 

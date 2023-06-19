@@ -1,12 +1,11 @@
 import { Icon } from '@iconify/react';
 import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
 import { Box, Button, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function TopBar1() {
   let navigate = useNavigate();
-
   let handleChangeLogin = () => {
     return (
       navigate("/login")
@@ -14,11 +13,10 @@ export default function TopBar1() {
   };
   return (
 
-
     < Box >
       <Stack direction="row" spacing={-1}>
         <ListItem disablePadding>
-          <Button>
+          <Button component={Link} to={`/tintuc`} >
             <AdjustOutlinedIcon />
             <ListItemText primary="IONIC" />
           </Button>

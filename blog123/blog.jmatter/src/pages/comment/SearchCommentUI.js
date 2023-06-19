@@ -58,7 +58,7 @@ export default function SearchComment() {
     },
     {
       field: 'content',
-      headerName: 'Content',
+      headerName: 'Comment',
       //type: 'number',
       width: 120,
       editable: true
@@ -69,7 +69,7 @@ export default function SearchComment() {
       //type: 'number',
       width: 120,
       editable: true
-    }, 
+    },
     {
       field: 'createdDate',
       headerName: 'Time Created',
@@ -91,10 +91,10 @@ export default function SearchComment() {
       renderCell: (list) => {
         //console.log("editing table", list.row)
         return (
-        <div>
-          <IconButton aria-label="edit" color="primary" component={Link} to={`/dashboard/comment/edit/${list.row.id}`}><EditIcon /></IconButton>
-          <IconButton aria-label="delete" color="primary" onClick={() => deleteItem(list.row.id)}> <DeleteIcon /></IconButton>
-        </div>);
+          <div>
+            <IconButton aria-label="edit" color="primary" component={Link} to={`/dashboard/comment/edit/${list.row.id}`}><EditIcon /></IconButton>
+            <IconButton aria-label="delete" color="primary" onClick={() => deleteItem(list.row.id)}> <DeleteIcon /></IconButton>
+          </div>);
       }
 
     },

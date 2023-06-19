@@ -1,7 +1,7 @@
 import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
 import { Button, Container, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 
@@ -71,8 +71,8 @@ export default function Header() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemText primary="Pricing" />
+                <ListItemButton component={Link} to={`/client`}>
+                  <ListItemText primary="BLog" />
                 </ListItemButton>
               </ListItem>
             </Stack>

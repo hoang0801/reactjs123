@@ -1,40 +1,67 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useError } from "../../../hooks/useError";
+import { searchPost, setPostSearch } from "../../../redux/postSlice";
 
 export default function Tintuc() {
 
-  const [value, setValue] = useState();
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+
+  const { showError } = useError();
+
+  const { posts, recordsFiltered, search, error } = useSelector((state) => state.post);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(posts.map);
+
+    const timeout = setTimeout(() => {
+      find();
+    }, 500);
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search]); // khi redux seearch thay doi, thi se dc goi lai find
+
+  const find = async () => {
+    dispatch(searchPost());
   };
 
+  const handleChange = (e) => {
+    let newSearch = {
+      ...search,
+      start: 0,// reset lai trang dau
+      [e.target.name]: e.target.value
+    };
+
+    //update thay doi redux search
+    dispatch(setPostSearch(newSearch));
+  };
   return (
     <>
       <Container maxWidth='md'>
         <Box marginTop={5}>
           <Grid container spacing={8}>
-            <Grid item xs={8} >
-              <Typography variant="h4">
-                Bộ Công an: Vụ tấn công ở Đăk Lăk 'có tổ chức, man rợ'
-              </Typography>
-              <Typography>
-                Vụ tấn công hai trụ sở ủy ban xã Ea Tiêu và Ea Ktur "có tổ chức, rất manh động, liều lĩnh, man rợ và mất nhân tính", theo người phát ngôn Bộ Công an.
-                <br />
-                Trung tướng Tô Ân Xô, người phát ngôn Bộ Công an, cho biết rạng sáng 11/6 khi xông vào trụ sở UBND xã Ea Ktur, Ea Tiêu, đám đông đập vỡ cửa kính, dùng súng và vũ khí thô sơ tấn công khiến Bí thư xã Ea Ktur, Chủ tịch xã Ea Tiêu và 4 cán bộ công an tử vong; hai công an trọng thương.
-              </Typography>
-              <img src="sung.jpg" alt="Girl in a jacket" width="550" height="300" />
+            {posts.map((post) => (
+              <Grid item xs={8}
+                key={post.id} post={post} >
+                <Typography variant="h4">
+                  {post.title}
+                </Typography>
+                <Typography>
+                  {post.description}
+                </Typography>
+                <img width="550" height="300"></img>
 
-              <Typography>
-                VTV thông tin, rạng sáng 11/6, nhóm nghi phạm xông vào đập phá cửa chính và các cửa sổ hai trụ sở UBND xã Ea Tiêu và Ea Ktur. Đám đông ném bom xăng vào phòng khiến nhiều thiết bị, tài liệu giấy tờ cháy rụi. Hiện trường có nhiều vết đạn, ôtô bị đốt trơ khung.
-                <br />
-                Sau khi đốt phá và sát hại 4 cán bộ làm nhiệm vụ, nhóm nghi phạm di chuyển ra đường, tiếp tục dùng súng, dao, bom xăng tấn công. Hành vi này làm 9 người chết, 2 người bị thương.
-                <br />
-                Hàng chục nghi phạm bị bắt sau vụ tấn công hai trụ sở ủy ban xã Ea Tiêu và Ea Ktur đều cư ngụ tại tỉnh Đăk Lăk. Khai với cơ quan điều tra, họ cho biết có bàn bạc trong cuộc họp, phân công nhiệm vụ và được đưa súng, dao, bom xăng, lựu đạn cho từng người.
-              </Typography>
+                <Typography>
+                  VTV thông tin, rạng sáng 11/6, nhóm nghi phạm xông vào đập phá cửa chính và các cửa sổ hai trụ sở UBND xã Ea Tiêu và Ea Ktur. Đám đông ném bom xăng vào phòng khiến nhiều thiết bị, tài liệu giấy tờ cháy rụi. Hiện trường có nhiều vết đạn, ôtô bị đốt trơ khung.
+                  <br />
+                  Sau khi đốt phá và sát hại 4 cán bộ làm nhiệm vụ, nhóm nghi phạm di chuyển ra đường, tiếp tục dùng súng, dao, bom xăng tấn công. Hành vi này làm 9 người chết, 2 người bị thương.
+                  <br />
+                  Hàng chục nghi phạm bị bắt sau vụ tấn công hai trụ sở ủy ban xã Ea Tiêu và Ea Ktur đều cư ngụ tại tỉnh Đăk Lăk. Khai với cơ quan điều tra, họ cho biết có bàn bạc trong cuộc họp, phân công nhiệm vụ và được đưa súng, dao, bom xăng, lựu đạn cho từng người.
+                </Typography>
+              </Grid>
+            ))}
 
-
-
-            </Grid>
 
             <Grid item xs={4}>
               <Box marginTop={10} marginLeft={5}>
@@ -96,4 +123,4 @@ export default function Tintuc() {
 
     </>
   );
-}
+};
