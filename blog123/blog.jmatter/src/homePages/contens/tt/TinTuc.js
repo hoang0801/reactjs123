@@ -2,6 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as Yup from "yup";
@@ -48,16 +49,18 @@ export default function Tintuc() {
         <Box marginTop={5}>
           <Grid container spacing={8}>
             {posts.map((post) => (
+
               <Grid item xs={8}
                 key={post.id}
                 post={post}>
-                <Typography variant="h4">
+            
+                <ReactMarkdown variant="h4">
                   {post.title}
-                </Typography>
-                <Typography>
+                </ReactMarkdown>
+                <ReactMarkdown>
                   {post.description}
-                </Typography>
-                <img width="550" height="300"></img>
+                </ReactMarkdown>
+                <img  src={ post.images } width="550" height="300"></img>
 
                 <Typography>
                   VTV thông tin, rạng sáng 11/6, nhóm nghi phạm xông vào đập phá cửa chính và các cửa sổ hai trụ sở UBND xã Ea Tiêu và Ea Ktur. Đám đông ném bom xăng vào phòng khiến nhiều thiết bị, tài liệu giấy tờ cháy rụi. Hiện trường có nhiều vết đạn, ôtô bị đốt trơ khung.

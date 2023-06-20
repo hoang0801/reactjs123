@@ -1,7 +1,8 @@
 import { Box, Container, Grid } from "@mui/material";
 import Header from './components/Header';
 import TopBar from "./components/topbar";
-import Content1 from './contens/Content1';
+
+import ContentPost from "./contens/ContenPost";
 import './home.css';
 
 
@@ -18,7 +19,7 @@ export default function Home() {
           </Grid>
           <Box marginTop={4}>
             <Grid item sx={12}>
-              <Content1 />
+              <ContentPost />
             </Grid>
           </Box>
 

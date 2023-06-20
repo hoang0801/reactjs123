@@ -1,9 +1,8 @@
-import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import { AppBar, Box, Button, IconButton, InputBase, ListItemText, Paper, Stack, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, IconButton, InputBase, Paper, Stack, Toolbar, Typography } from "@mui/material";
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { searchPost, setPostSearch } from '../../redux/postSlice';
 
 export default function TopBar1() {
@@ -56,11 +55,11 @@ export default function TopBar1() {
           <IconButton
             size="large"
             edge="start"
-            color="Lavender"
+          
             sx={{ mr: 2 }}
           >
-            <AdjustOutlinedIcon />
-            <ListItemText component={Link} to={`/home`} primary="IONIC" />
+            <img src='/logoo.png'/>
+            
           </IconButton>
           <Box marginLeft={5} >
             <Stack direction="row" spacing={3} >

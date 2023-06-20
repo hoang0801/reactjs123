@@ -1,4 +1,3 @@
-import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
 import { Box, Button, Container, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
@@ -28,8 +27,7 @@ export default function Header() {
           <Stack direction="row" spacing={1}>
             <ListItem disablePadding>
               <Button>
-                <AdjustOutlinedIcon />
-                <ListItemText fon primary="IONIC" />
+              <img src='/logoo.png'/>
               </Button>
             </ListItem>
 

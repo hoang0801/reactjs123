@@ -15,6 +15,7 @@ import SearchCategory from './pages/category/SearchCategoryUI';
 import NewComment from './pages/comment/NewComment';
 import SearchComment from './pages/comment/SearchCommentUI';
 import Login from './pages/login/Login';
+import LoginPage from './pages/login/LoginPages';
 import EditPost from './pages/post/EditPost';
 import NewPost from './pages/post/NewPost';
 import { Post } from './pages/post/Post';
@@ -32,6 +33,8 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/client/' element={<Home />} />
             {/* <Route index element={<Navigate to="/client/content" />} /> */}
+            <Route path='/page' element={<LoginPage />} />
+
 
             <Route path='/tintuc/:id' element={<Tintuc />} />
             <Route path='/thongtin/' element={<ThongTin />} />
