@@ -1,5 +1,5 @@
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, Divider, Grid, Stack, Typography } from "@mui/material";
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -76,22 +76,35 @@ export default function ContentFeatured() {
         </Grid>
 
 
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            {categories.map((category) => (
-              <Box p={2}
-                key={category.id} category={category}
-                minHeight={10}
-                borderRadius={3}>
-                <Typography variant="h6">
+
+
+
+
+        <Stack direction="row"
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={2}
+          marginTop={5} >
+          {categories.map((category) => (
+            <Card sx={{ width: 300, height: 200 }}
+
+            >
+              <CardContent
+                key={category.id}
+                category={category}>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   {category.name}
                 </Typography>
-                <Button component={Link} to={`/tintuc`} variant="text">READ NOW</Button>
-              </Box>
-            ))
-            }
-          </Grid>
-        </Grid>
+              </CardContent>
+              <CardActions>
+                <Link to={`/tintuc/${category.id}`} >
+                  <Button size="small" >Xem</Button>
+                </Link>
+              </CardActions>
+            </Card>
+          ))
+          }
+        </Stack>
+
 
       </Box>
 

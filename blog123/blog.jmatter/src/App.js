@@ -31,12 +31,11 @@ function App() {
           <Routes>
             <Route index element={<Home />} />
             <Route path='/client/' element={<Home />} />
-            <Route path='/tintuc/' element={<Tintuc />} />
+            {/* <Route index element={<Navigate to="/client/content" />} /> */}
+
+            <Route path='/tintuc/:id' element={<Tintuc />} />
             <Route path='/thongtin/' element={<ThongTin />} />
             <Route path="/post" element={<Post />} />
-
-
-
 
             <Route path='/' element={<Login />} />
             <Route path='/login' element={<LoginTemplate />} />

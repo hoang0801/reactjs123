@@ -18,6 +18,7 @@ export const addCategoryAPI = async (category) => {
   return handleRequest(config);
 
 };
+
 export const viewCategoryAPI = async (id) => {
   const config = {
     url: '/api/category/${id}',

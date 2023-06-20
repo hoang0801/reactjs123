@@ -1,18 +1,16 @@
-import { alpha } from '@material-ui/core';
 import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import { Box, Button, Container, InputBase, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
+import { AppBar, Box, Button, IconButton, InputBase, ListItemText, Paper, Stack, Toolbar, Typography } from "@mui/material";
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import { searchPost, setPostSearch } from '../../redux/postSlice';
 
 export default function TopBar1() {
- 
+
 
   const { posts, recordsFiltered, search, error } = useSelector((state) => state.post);
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,11 +27,11 @@ export default function TopBar1() {
     dispatch(searchPost());
   };
 
-  const handleChangeLogin =() =>{
-    return(
+  const handleChangeLogin = () => {
+    return (
       Navigate("/login")
-    )
-  }
+    );
+  };
 
   const handleChange = (e) => {
     let newSearch = {
@@ -45,130 +43,66 @@ export default function TopBar1() {
     //update thay doi redux search
     dispatch(setPostSearch(newSearch));
   };
-  
 
-  const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  }));
-  
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }));
-  
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
-          width: '20ch',
-        },
-      },
-    },
-  }));
 
- 
- 
+
+
+
   return (
-<Container>
-    < Box >
-      <Stack direction="row" spacing={-1}>
-        <ListItem disablePadding>
-          <Button component={Link} to={`/tintuc`} >
+
+    <Box sx={{ flexGrow: 1, position: 'fixed' }}>
+      <AppBar sx={{ bgcolor: '#FAFAFA' }} position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="Lavender"
+            sx={{ mr: 2 }}
+          >
             <AdjustOutlinedIcon />
-            <ListItemText primary="IONIC" />
-          </Button>
-        </ListItem>
+            <ListItemText component={Link} to={`/home`} primary="IONIC" />
+          </IconButton>
+          <Box marginLeft={5} >
+            <Stack direction="row" spacing={3} >
+              <Typography sx={{ color: '#808080' }}  >News</Typography>
+              <Typography sx={{ color: '#808080' }}  >Framework</Typography>
+              <Typography sx={{ color: '#808080' }}  >Products</Typography>
+              <Typography sx={{ color: '#808080' }}  >Developers</Typography>
+              <Typography sx={{ color: '#808080' }}  >Businesses</Typography>
+              <Typography sx={{ color: '#808080' }}  >Suport</Typography>
+            </Stack>
 
-        <Stack direction="row" spacing={1}>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Framework" />
-            </ListItemButton>
-          </ListItem>
+          </Box>
 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Products" />
-            </ListItemButton>
-          </ListItem>
+          <Box marginLeft={12} value={search.keyword} onChange={handleChange}>
+            <Paper
+              component="form"
+              sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 200 }}
+            >
+              <InputBase
+                marginLeft={15}
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Search..."
+                inputProps={{ 'aria-label': 'Search...' }}
+              />
+              <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                <SearchIcon />
+              </IconButton>
+            </Paper>
+          </Box>
+          <Box marginLeft={2}>
+            <Button onClick={handleChangeLogin} color="inherit">
+              <Typography color="Gray" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                Login
+              </Typography>
+            </Button>
+          </Box>
 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Developers " />
-            </ListItemButton>
-          </ListItem>
+        </Toolbar>
+      </AppBar>
+    </Box>
 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Businesses" />
-            </ListItemButton>
-          </ListItem>
 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Suport" />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Resources" />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Pricing" />
-            </ListItemButton>
-          </ListItem>
-        </Stack>
-
-        <ListItem disablePadding>
-        
-        <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-        </ListItem>
-
-        <ListItem disablePadding>
-
-          <Button onClick={handleChangeLogin} variant="contained">
-            <ListItemText primary="Sign in" />
-          </Button>
-        </ListItem>
-      </Stack>
-
-    </Box >
-    </Container>
   );
 }
 

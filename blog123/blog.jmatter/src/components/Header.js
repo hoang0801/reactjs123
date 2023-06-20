@@ -1,5 +1,5 @@
 import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
-import { Button, Container, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
+import { Box, Button, Container, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
@@ -76,16 +76,15 @@ export default function Header() {
                 </ListItemButton>
               </ListItem>
             </Stack>
-
-            <ListItem disablePadding>
+            <Box marginLeft={30}>
               <Button variant="contained" onClick={handleLogoutCLick}>
                 log out
               </Button>
-            </ListItem>
+            </Box>
           </Stack>
 
         </Stack>
-      </Container>
+      </Container >
     </>
 
   );

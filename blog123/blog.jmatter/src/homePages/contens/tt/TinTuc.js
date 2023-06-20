@@ -1,41 +1,47 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import * as Yup from "yup";
 import { useError } from "../../../hooks/useError";
 import { searchPost, setPostSearch } from "../../../redux/postSlice";
 
 export default function Tintuc() {
-
-
   const { showError } = useError();
+  let { id } = useParams();
 
   const { posts, recordsFiltered, search, error } = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(posts.map);
-
-    const timeout = setTimeout(() => {
-      find();
-    }, 500);
-    return () => clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (search.categoryId != id)
+      dispatch(setPostSearch({ ...search, categoryId: id }));
+    else {
+      const timeout = setTimeout(() => {
+        find();
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
   }, [search]); // khi redux seearch thay doi, thi se dc goi lai find
 
   const find = async () => {
     dispatch(searchPost());
   };
 
-  const handleChange = (e) => {
-    let newSearch = {
-      ...search,
-      start: 0,// reset lai trang dau
-      [e.target.name]: e.target.value
-    };
+  const currentPost = posts.find(c => c.id === parseInt(id));
 
-    //update thay doi redux search
-    dispatch(setPostSearch(newSearch));
-  };
+  const NewItemSchema = Yup.object().shape({
+    name: Yup.string().required("Required, please enter."),
+    id: Yup.number().moreThan(0, "Required number, please enter."),
+  });
+
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(NewItemSchema),
+    defaultValues: currentPost
+  });
+
   return (
     <>
       <Container maxWidth='md'>
@@ -43,7 +49,8 @@ export default function Tintuc() {
           <Grid container spacing={8}>
             {posts.map((post) => (
               <Grid item xs={8}
-                key={post.id} post={post} >
+                key={post.id}
+                post={post}>
                 <Typography variant="h4">
                   {post.title}
                 </Typography>
@@ -61,7 +68,6 @@ export default function Tintuc() {
                 </Typography>
               </Grid>
             ))}
-
 
             <Grid item xs={4}>
               <Box marginTop={10} marginLeft={5}>

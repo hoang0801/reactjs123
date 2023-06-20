@@ -12,27 +12,23 @@ export default function Home() {
   return (
     <>
       <Container maxWidth='lg'  >
-        <Box sx={{ bgcolor: '#f5f5f5', height: 'auto', Border: '5' }} >
-          <Grid>
-            <Grid item sx={12} >
-              <Header />
-            </Grid>
-            <Box marginTop={4}>
-              <Grid item sx={12}>
-                <Content1 />
-              </Grid>
-            </Box>
-
-            <Box marginTop={5} >
-              <Grid item sx={12}>
-                <TopBar />
-              </Grid>
-            </Box>
+        <Box sx={{ bgcolor: '#FAFAFA', height: 'auto', Border: '5' }} >
+          <Grid item sx={12} marginTop={-4} >
+            <Header />
           </Grid>
+          <Box marginTop={4}>
+            <Grid item sx={12}>
+              <Content1 />
+            </Grid>
+          </Box>
+
+          <Box marginTop={5}  >
+            <Grid item sx={12}>
+              <TopBar />
+            </Grid>
+          </Box>
         </Box>
-        {/* <Grid marginTop={3} item sx={12}>
-          <Content2 />
-        </Grid> */}
+
       </Container>
 
 
