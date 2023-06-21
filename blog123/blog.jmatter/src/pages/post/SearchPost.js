@@ -112,11 +112,11 @@ export default function SearchPost() {
         </thead>
         <tbody>
           {
-            posts?.map(({ id, title, image, categoryId, category, createdBy, createdDate }) => (
+            posts?.map(({ id, title, images, categoryId, createdDate }) => (
               <tr key={id}>
                 <td>{id}</td>
                 <td>{title}</td>
-                <td>{image}</td>
+                <td>{images}</td>
                 <td>{categoryId}</td>
                 <td>{createdDate}</td>
                 <td>

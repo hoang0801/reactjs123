@@ -1,12 +1,18 @@
 import { LinearProgress } from '@mui/material';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { AuthenProvider } from './context/authenContext';
 
-import ThongTin from './homePages/contens/tt/NCĐH';
-import Tintuc from './homePages/contens/tt/TinTuc';
+
+
 import Home from './homePages/home';
+
+
+import ThongTin from './homePages/contens/contentPost/Thongtin';
+
+import Tintuc from './homePages/contens/contentPost/TinTuc';
+import SearchPosts from './homePages/search/searchPosts';
 import { useAuth } from './hooks/useAuth';
 import MainLayout from './layout/MainLayout';
 import EditCategory from './pages/category/EditCategory';
@@ -18,7 +24,6 @@ import Login from './pages/login/Login';
 import LoginPage from './pages/login/LoginPages';
 import EditPost from './pages/post/EditPost';
 import NewPost from './pages/post/NewPost';
-import { Post } from './pages/post/Post';
 import SearchPost from './pages/post/SearchPostUI';
 import { EditUser } from './pages/user/EditUser';
 import NewUser from './pages/user/NewUser';
@@ -31,18 +36,18 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
-            <Route path='/client/' element={<Home />} />
-            {/* <Route index element={<Navigate to="/client/content" />} /> */}
-            <Route path='/page' element={<LoginPage />} />
-
+            <Route path='/client' element={<Home />} />
+            <Route index element={<Navigate to="/client/content" />} />
 
             <Route path='/tintuc/:id' element={<Tintuc />} />
-            <Route path='/thongtin/' element={<ThongTin />} />
-            <Route path="/post" element={<Post />} />
+            <Route path='/thongtin/:id' element={<ThongTin />} />
+            <Route path="/client/search" element={<SearchPosts />} />
+            <Route path='/page' element={<LoginPage />} />
 
             <Route path='/' element={<Login />} />
             <Route path='/login' element={<LoginTemplate />} />
             <Route path="/dashboard" element={<MainLayout />}>
+
               <Route index element={<Navigate to="/dashboard/users" />} />
               <Route path="users" element={<SearchUser />} />
               <Route path="user/new" element={<NewUser />} />
@@ -96,9 +101,8 @@ function LoginTemplate() {
     return <Navigate to={"/dashboard"} />;
 
   return (<>
-    {/* <MainLayout /> */}
+
     <Login />
-    <Outlet />
 
   </>);
 }

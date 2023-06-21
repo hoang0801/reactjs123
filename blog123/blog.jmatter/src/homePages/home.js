@@ -1,12 +1,8 @@
 import { Box, Container, Grid } from "@mui/material";
-import Header from './components/Header';
-import TopBar from "./components/topbar";
-
-import ContentPost from "./contens/ContenPost";
+import Featured from "./components/Featured";
+import TopBar1 from "./components/Header";
+import ContentPost from "./contens/contentPost/ContenPost";
 import './home.css';
-
-
-
 
 export default function Home() {
 
@@ -15,7 +11,7 @@ export default function Home() {
       <Container maxWidth='lg'  >
         <Box sx={{ bgcolor: '#FAFAFA', height: 'auto', Border: '5' }} >
           <Grid item sx={12} marginTop={-4} >
-            <Header />
+            <TopBar1 />
           </Grid>
           <Box marginTop={4}>
             <Grid item sx={12}>
@@ -25,7 +21,7 @@ export default function Home() {
 
           <Box marginTop={5}  >
             <Grid item sx={12}>
-              <TopBar />
+              <Featured />
             </Grid>
           </Box>
         </Box>

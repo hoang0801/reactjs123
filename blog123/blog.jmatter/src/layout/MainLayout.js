@@ -47,10 +47,11 @@ const MainLayout = () => {
       {/* <Box className={classes.header}><Header /></Box> */}
       <Box className={classes.header}><Header /></Box>
       <Box className={classes.sidebar}><SideBar /></Box>
-      <Box className={classes.footer}><Footer /></Box>
       <Box className={classes.main}>
         <Outlet />
       </Box>
+      <Box className={classes.footer}><Footer /></Box>
+
     </Box>);
   return <Navigate to={"/login"} />;
 };

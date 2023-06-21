@@ -66,19 +66,13 @@ export default function ContentFeatured() {
             </Typography>
           </Grid>
           <Grid item xs={2}>
-            <Button sx={{ marginRight: 7 }} >
+            <Button onClick={next} sx={{ marginRight: 7 }} >
 
               See all
-
               <ArrowForwardOutlinedIcon />
             </Button>
           </Grid>
         </Grid>
-
-
-
-
-
 
         <Stack direction="row"
           divider={<Divider orientation="vertical" flexItem />}

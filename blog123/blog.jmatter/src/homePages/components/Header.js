@@ -32,6 +32,12 @@ export default function TopBar1() {
     );
   };
 
+  const handleChangeSearch = () => {
+    return (
+      Navigate("/client/search")
+    );
+  };
+
   const handleChange = (e) => {
     let newSearch = {
       ...search,
@@ -55,11 +61,11 @@ export default function TopBar1() {
           <IconButton
             size="large"
             edge="start"
-          
+
             sx={{ mr: 2 }}
           >
-            <img src='/logoo.png'/>
-            
+            <img src='/logoo.png' />
+
           </IconButton>
           <Box marginLeft={5} >
             <Stack direction="row" spacing={3} >
@@ -73,10 +79,10 @@ export default function TopBar1() {
 
           </Box>
 
-          <Box marginLeft={12} value={search.keyword} onChange={handleChange}>
+          <Box marginLeft={14} value={search.keyword} onChange={handleChange}>
             <Paper
               component="form"
-              sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 200 }}
+              sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 150 }}
             >
               <InputBase
                 marginLeft={15}
@@ -84,7 +90,7 @@ export default function TopBar1() {
                 placeholder="Search..."
                 inputProps={{ 'aria-label': 'Search...' }}
               />
-              <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+              <IconButton onClick={handleChangeSearch} type="button" sx={{ p: '10px' }} aria-label="search">
                 <SearchIcon />
               </IconButton>
             </Paper>

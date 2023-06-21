@@ -1,18 +1,16 @@
 import { Box, Button, CardActions, Container, Grid, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { searchPost, setPostSearch } from "../../redux/postSlice";
+import { searchPost, setPostSearch } from "../../../redux/postSlice";
+
 
 export default function ContentPost() {
-
-
   const { posts, recordsFiltered, search, error } = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(posts.map);
-
     const timeout = setTimeout(() => {
       find();
     }, 500);
@@ -28,6 +26,7 @@ export default function ContentPost() {
     let newSearch = {
       ...search,
       start: 0,// reset lai trang dau
+      size: 3,
       [e.target.name]: e.target.value
     };
 
@@ -52,31 +51,31 @@ export default function ContentPost() {
           </Grid>
         </Grid>
 
-        
-          <Stack marginLeft={3} direction="row" spacing={4} sx={{ marginTop: 4}}>
-            {posts.map((post)=>(
-            <Box p={2} borderRadius={3}
+
+        <Stack marginLeft={3} direction="row" spacing={4} sx={{ marginTop: 4 }}>
+          {posts.slice(0, 3).map((post) => (
+            <Box p={2} borderRadius={3} key={post.id}
               sx={{
                 height: 150,
                 width: 450,
-                backgroundImage: "url('\cau-cong-vang.jpg')"
-              }} >
-              <Typography variant="h6"  color="#0A0606" >
-              {post.title}
+                backgroundImage: `url(http://52.193.212.182:8080/image/${post.images[0]})`
+              }}>
+              <Typography variant="h6" color="#0A0606" >
+                {post.title}
               </Typography>
               <CardActions>
-              <Link to={`/tintuc/${post.id}`} >
+                <Link to={`/thongtin/${post.id}`} >
                   <Button size="small" >Xem</Button>
                 </Link>
-                </CardActions>
-              
-              
-            </Box>
-            ))}
-          </Stack>
+              </CardActions>
 
-          
-        
+
+            </Box>
+          ))}
+        </Stack>
+
+
+
 
       </Container>
     </Grid>

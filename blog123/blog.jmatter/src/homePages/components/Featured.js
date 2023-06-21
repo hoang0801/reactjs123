@@ -9,7 +9,7 @@ import { default as ContentFeatured } from '../contens/ContentCategory/ContentFe
 
 
 
-export default function TopBar() {
+export default function Featured() {
   const [value, setValue] = useState();
 
   const handleChange = (event, newValue) => {
@@ -24,12 +24,12 @@ export default function TopBar() {
 
             <TabList onChange={handleChange}>
               <Tab label="Featured" icon={<LibraryBooksOutlinedIcon />} iconPosition="start" value="1" />
-            
+
             </TabList>
 
           </Box>
           <TabPanel value="1"><ContentFeatured /></TabPanel>
-         
+
         </TabContext>
       </Box>
     </>

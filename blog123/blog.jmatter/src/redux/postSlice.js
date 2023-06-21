@@ -59,7 +59,7 @@ export const searchPost = () =>
     const { search } = post;
 
     const { code, result } = await searchPostAPI(search);
-    console.log(result)
+    console.log(result);
 
     if (code === 200)
       dispatch(postSlice.actions.setPosts(result));
