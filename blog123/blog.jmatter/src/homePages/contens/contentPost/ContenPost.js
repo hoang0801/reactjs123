@@ -1,9 +1,10 @@
-import { Box, Button, CardActions, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
-
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { searchPost, setPostSearch } from "../../../redux/postSlice";
+
 
 
 export default function ContentPost() {
@@ -36,49 +37,65 @@ export default function ContentPost() {
 
 
   return (
+    <Box bgcolor={"#EEEEEE"} ><Box marginTop="20">
+      <Grid container spacing={2}>
+        <Grid sx={{ marginTop: 10, marginLeft: 5 }} >
+          <Stack direction="row">
 
-    <Grid container spacing={2}>
-      <Container sx={50}>
+            <Grid item xs={8} >
+              {posts.slice(3, 4).map((post) => (
+                <Stack direction="row" spacing={2} key={post.id} >
+                  <Link to={`/thongtin/${post.id}`} >
+                    <img src={`http://52.193.212.182:8080/image/${post.images[0]}`} alt="nghien cuu" width="450" height="300" />
+                  </Link>
+                  <Grid>
+                    <Typography variant="h5">
+                      {post.title}
+                    </Typography>
+                    <ReactMarkdown >
+                      Tỷ phú xe điện đánh giá Ấn Độ có tiềm năng lớn về năng lượng bền vững và muốn Tesla có mặt tại đây sớm nhất có thể.
+                    </ReactMarkdown>
+                  </Grid>
+                </Stack>
+              ))}
 
-        <Grid container spacing={4}>
-          <Grid item xs={12}>
-            <Typography variant="h4">
-              Resource Center
-            </Typography>
-            <Typography variant="body2" color={"#757575"}>
-              learn about everything from customer succerss stories, product info, to viewpoints from the core team
-            </Typography>
-          </Grid>
+              <Stack marginLeft={3} direction="row" spacing={4} sx={{ marginTop: 4 }}>
+                {posts.slice(1, 4).map((post) => (
+                  <Box
+                    p={2}
+                    borderRadius={3}
+                    width="300"
+                    height="200"
+                    key={post.id}>
+                    <Typography variant="h6" color="#0A0606" >
+                      {post.title}
+                    </Typography>
+                    <ReactMarkdown>
+                      {post.direction}
+                    </ReactMarkdown>
+                  </Box>
+                ))}
+              </Stack>
+            </Grid >
+
+
+            <Grid item xs={4}>
+              <img src={'/sim.png'} width="300" height="570" />
+            </Grid>
+          </Stack>
         </Grid>
 
-
-        <Stack marginLeft={3} direction="row" spacing={4} sx={{ marginTop: 4 }}>
-          {posts.slice(0, 3).map((post) => (
-            <Box p={2} borderRadius={3} key={post.id}
-              sx={{
-                height: 150,
-                width: 450,
-                backgroundImage: `url(http://52.193.212.182:8080/image/${post.images[0]})`
-              }}>
-              <Typography variant="h6" color="#0A0606" >
-                {post.title}
-              </Typography>
-              <CardActions>
-                <Link to={`/thongtin/${post.id}`} >
-                  <Button size="small" >Xem</Button>
-                </Link>
-              </CardActions>
+      </Grid>
 
 
-            </Box>
-          ))}
-        </Stack>
+    </Box >
 
 
-
-
-      </Container>
-    </Grid>
+      <Grid container spacing={2}>
+        <Container sx={50}>
+        </Container>
+      </Grid>
+    </Box>
 
   );
 }

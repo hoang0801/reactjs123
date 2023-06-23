@@ -40,7 +40,7 @@ export default function TabContent() {
           </Typography>
 
           <Grid container spacing={2}>
-            {posts.slice(0, 3).map((post) => (
+            {posts.map((post) => (
               <Box key={post.id}
                 post={post} >
                 <Grid sx={4}>

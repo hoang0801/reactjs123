@@ -1,9 +1,9 @@
-import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import { Box, Button, Card, CardActions, CardContent, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, Divider, Stack, Typography } from "@mui/material";
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { searchCategory, setCategorySearch } from '../../../redux/categorySlice';
+import TabContent from "../../components/tabContent";
 
 export default function ContentFeatured() {
 
@@ -56,24 +56,7 @@ export default function ContentFeatured() {
   };
   return (
     <Stack>
-
       <Box>
-        <Grid container spacing={2}>
-          <Grid item xs={10}>
-
-            <Typography variant="h4">
-              Case Studies
-            </Typography>
-          </Grid>
-          <Grid item xs={2}>
-            <Button onClick={next} sx={{ marginRight: 7 }} >
-
-              See all
-              <ArrowForwardOutlinedIcon />
-            </Button>
-          </Grid>
-        </Grid>
-
         <Stack direction="row"
           divider={<Divider orientation="vertical" flexItem />}
           spacing={2}
@@ -98,8 +81,7 @@ export default function ContentFeatured() {
           ))
           }
         </Stack>
-
-
+        <TabContent />
       </Box>
 
 

@@ -1,6 +1,6 @@
 import { Box, Container, Grid } from "@mui/material";
-import Featured from "./components/Featured";
 import TopBar1 from "./components/Header";
+import ContentFeatured from "./contens/ContentCategory/ContentFeatured";
 import ContentPost from "./contens/contentPost/ContenPost";
 import './home.css';
 
@@ -21,7 +21,7 @@ export default function Home() {
 
           <Box marginTop={5}  >
             <Grid item sx={12}>
-              <Featured />
+              <ContentFeatured />
             </Grid>
           </Box>
         </Box>
