@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,7 +43,7 @@ export default function ContentPost() {
           <Stack direction="row">
 
             <Grid item xs={8} >
-              {posts.slice(3, 4).map((post) => (
+              {posts.slice(2,3).map((post) => (
                 <Stack direction="row" spacing={2} key={post.id} >
                   <Link to={`/thongtin/${post.id}`} >
                     <img src={`http://52.193.212.182:8080/image/${post.images[0]}`} alt="nghien cuu" width="450" height="300" />
@@ -58,7 +58,7 @@ export default function ContentPost() {
                   </Grid>
                 </Stack>
               ))}
-
+               
               <Stack marginLeft={3} direction="row" spacing={4} sx={{ marginTop: 4 }}>
                 {posts.slice(1, 4).map((post) => (
                   <Box
@@ -86,15 +86,13 @@ export default function ContentPost() {
         </Grid>
 
       </Grid>
+      <Divider/>
 
 
     </Box >
 
 
-      <Grid container spacing={2}>
-        <Container sx={50}>
-        </Container>
-      </Grid>
+      
     </Box>
 
   );

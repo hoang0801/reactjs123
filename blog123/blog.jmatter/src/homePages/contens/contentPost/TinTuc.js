@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Container, Grid, Stack } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { searchPost, setPostSearch } from "../../../redux/postSlice";
-import TabContent from "../../components/tabContent";
 
 export default function Tintuc() {
   let { id } = useParams();
@@ -65,13 +64,7 @@ export default function Tintuc() {
               </Grid>
             ))}
 
-            <Grid item xs={4}>
-              <Box marginTop={10} marginLeft={5}>
-                <Stack spacing={2}  >
-                  <TabContent />
-                </Stack>
-              </Box>
-            </Grid>
+            
           </Grid>
         </Box>
       </Container>

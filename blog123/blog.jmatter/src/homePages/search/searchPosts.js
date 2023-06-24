@@ -1,5 +1,5 @@
 import SearchIcon from '@mui/icons-material/Search';
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Divider, Grid, IconButton, InputBase, Paper, Stack, Typography } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Container, Divider, Grid, IconButton, InputBase, Paper, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -99,11 +99,9 @@ export default function SearchPosts() {
                       {post.title}
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Link to={`/tintuc/${post.id}`} >
-                      <Button size="small" >Xem</Button>
-                    </Link>
-                  </CardActions>
+                  <Link to={`/tintuc/${post.id}`} />
+                      
+                      
                 </Box>
 
                 <CardMedia

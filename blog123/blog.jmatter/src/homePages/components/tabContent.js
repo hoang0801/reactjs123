@@ -1,6 +1,7 @@
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { searchPost, setPostSearch } from "../../redux/postSlice";
 
 export default function TabContent() {
@@ -35,12 +36,14 @@ export default function TabContent() {
     <Grid xs={4}>
       <Box marginTop={10} marginLeft={5}>
         <Stack spacing={2}  >
-          <Typography>
+          <Link  to={`/xem`}>
+            <Button>
             xem nhiều
-          </Typography>
+            </Button>
+            </Link>
 
           <Grid container spacing={2}>
-            {posts.map((post) => (
+            {posts.slice(1, 4).map((post) => (
               <Box key={post.id}
                 post={post} >
                 <Grid sx={4}>

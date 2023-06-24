@@ -10,8 +10,8 @@ import Home from './homePages/home';
 
 
 import ThongTin from './homePages/contens/contentPost/Thongtin';
-
 import Tintuc from './homePages/contens/contentPost/TinTuc';
+import XemNhieu from './homePages/contens/contentPost/XemNhieu';
 import SearchPosts from './homePages/search/searchPosts';
 import { useAuth } from './hooks/useAuth';
 import MainLayout from './layout/MainLayout';
@@ -43,6 +43,7 @@ function App() {
             <Route path='/thongtin/:id' element={<ThongTin />} />
             <Route path="/client/search" element={<SearchPosts />} />
             <Route path='/page' element={<LoginPage />} />
+            <Route path='/xem' element={<XemNhieu />} />
 
             <Route path='/' element={<Login />} />
             <Route path='/login' element={<LoginTemplate />} />

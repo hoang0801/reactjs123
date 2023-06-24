@@ -12,7 +12,7 @@ const initialState = {
   error: null,
   search: {
     start: 0,
-    length: 10,
+    length: 20,
     search: {
       value: ''
     }

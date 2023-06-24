@@ -1,94 +1,116 @@
-import { Box, Button, Card, CardActions, CardContent, Divider, Stack, Typography } from "@mui/material";
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { searchCategory, setCategorySearch } from '../../../redux/categorySlice';
-import TabContent from "../../components/tabContent";
+import { Box, Container, Divider, Grid, Stack, Typography } from "@mui/material";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useError } from "../../../hooks/useError";
+import { searchPost } from "../../../redux/postSlice";
 
-export default function ContentFeatured() {
-
-
-  const { categories, recordsFiltered, search, error } = useSelector((state) => state.category);
+ function ContentFeatured() {
+  const { showError } = useError();
+ const navigate = useNavigate()
+  const { posts, recordsFiltered, search, error } = useSelector((state) => state.post);
   const dispatch = useDispatch();
-  console.log(categories);
+
   useEffect(() => {
+    console.log(posts.map);
     const timeout = setTimeout(() => {
       find();
     }, 500);
     return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]); // khi redux seearch thay doi, thi se dc goi lai find
 
   const find = async () => {
-    dispatch(searchCategory());
+    dispatch(searchPost());
   };
 
-  const handleChange = (e) => {
-    let newSearch = {
-      ...search,
-      start: 0,// reset lai trang dau
-      [e.target.name]: e.target.value
-    };
+  const handleChange =()=>{
+    return(
+      navigate("/tintuc")
+    )
+  }
 
-    //update thay doi redux search
-    dispatch(setCategorySearch(newSearch));
-  };
-
-  const back = () => {
-    let start = search.start - parseInt(search.length);
-    start = start < 0 ? 0 : start;
-
-    //update thay doi redux search
-    dispatch(setCategorySearch({
-      ...search,
-      start
-    }));
-  };
-
-  const next = () => {
-    let start = (search.start) + parseInt(search.length);
-
-    //update thay doi redux search
-    if (start < recordsFiltered)
-      dispatch(setCategorySearch({
-        ...search,
-        start
-      }));
-  };
   return (
-    <Stack>
-      <Box>
-        <Stack direction="row"
-          divider={<Divider orientation="vertical" flexItem />}
-          spacing={2}
-          marginTop={5} >
-          {categories.map((category) => (
-            <Card sx={{ width: 300, height: 200 }}
+    <Box>
+      <Container>
+      <Grid container spacing={2}>
+  <Grid xs={4}>
+    <Box  sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
+      {posts.map((post)=>(
+    <Stack  spacing={2} key={post.id}>
+  <Typography>
+    {post.title}
+  </Typography>
+  <Stack direction="row" spacing={2}>
+    <img src={`http://52.193.212.182:8080/image/${post.images[0]}`}  width={80}  height={80} />
+    <Typography variant="body2">
+    Chiều 24/6, với gần 97,4% đại biểu tán thành, Quốc hội biểu quyết thông qua Nghị quyết về thí điểm cơ chế đặc thù cho phát triển TP HCM.
+    </Typography>
+  </Stack>
+  <Divider/>
+</Stack>
+))}
+    </Box>
+  </Grid>
 
-            >
-              <CardContent
-                key={category.id}
-                category={category}>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  {category.name}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Link to={`/tintuc/${category.id}`} >
-                  <Button size="small" >Xem</Button>
-                </Link>
-              </CardActions>
-            </Card>
-          ))
-          }
-        </Stack>
-        <TabContent />
-      </Box>
-
-
-    </Stack>
-
+  <Grid xs={4}>
+    <KinhDoanh/>
+  </Grid>
+  </Grid>
+  </Container>
+    </Box>
   );
 }
+
+function KinhDoanh(){
+  return(
+    <Box marginLeft={4}>
+    <Link
+  component="button"
+  variant="body2">
+  <Typography  variant="h6">
+Kinh Doanh
+  </Typography>
+</Link>
+
+<Grid container spacing={2}>
+<Box 
+     sx={{
+     
+        bgcolor:'#FFF0F5'}}>
+  <Grid item xs={8}>
+   
+          <Stack direction="row" spacing={2}>
+<Typography>
+  Quốc hội yêu cầu thanh tra toàn diện thị trường bảo hiểm nhân thọ
+  </Typography>
+<Typography> 
+  phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
+</Typography>
+</Stack>
+    
+  </Grid>
+  </Box>
+  
+  <Grid item xs={4}>
+    <Box sx={{ borderLeft: 1 }}>
+   <Typography variant="h6">
+    Ý định siết đầu tư vào Trung Quốc của Mỹ
+    </Typography>
+   <Typography variant="body2">
+    Viện dẫn an ninh quốc gia, chính phủ Mỹ cân nhắc thắt chặt quy định về vốn ra nước ngoài nhưng khả năng thực thi sẽ nhiều thách thức.
+     </Typography>
+     </Box>
+  </Grid>
+  </Grid>
+</Box>
+
+  )
+}
+
+export default ContentFeatured
+
+
 
 
 
