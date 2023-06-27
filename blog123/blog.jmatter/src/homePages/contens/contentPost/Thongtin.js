@@ -1,69 +1,41 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Container, Typography } from "@mui/material";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { Box, Container, Grid, Typography } from "@mui/material";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import * as Yup from "yup";
+import rehypeRaw from 'rehype-raw';
 import { useError } from "../../../hooks/useError";
-import { searchPost, setPostSearch } from "../../../redux/postSlice";
+import XemNhieu from "./XemNhieu";
 
 export default function ThongTin() {
   const { showError } = useError();
   let { id } = useParams();
 
-  const { posts, recordsFiltered, search, error } = useSelector((state) => state.post);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (search.postId != id)
-      dispatch(setPostSearch({ ...search, postId: id }));
-    else {
-      const timeout = setTimeout(() => {
-        find();
-      }, 500);
-      return () => clearTimeout(timeout);
-    }
-  }, [search]); // khi redux seearch thay doi, thi se dc goi lai find
-
-  const find = async () => {
-    dispatch(searchPost());
-  };
+  const { posts } = useSelector((state) => state.post);
 
   const currentPost = posts.find(c => c.id === parseInt(id));
 
-  const NewItemSchema = Yup.object().shape({
-    name: Yup.string().required("Required, please enter."),
-    id: Yup.number().moreThan(0, "Required number, please enter."),
-  });
-
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(NewItemSchema),
-    defaultValues: currentPost
-  });
-
-
   return (
-    <>
+    <Box sx={{ bgcolor: '#f7f7f7' }}>
       <Container maxWidth='md' sx={{ marginTop: 5, }}>
-        {posts.map((item) => (
-          <Box>
-            {console.log(item)}
+        <Grid container spacing={2}>
+          <Grid item xs={8}>
 
-            <Typography variant="h4">
-              {item.title}
-            </Typography>
-            <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} alt="nghien cuu" width="850" height="500" />
-            <Typography sx={{ marginTop: 5, }} >
-              {item.description}
-            </Typography>
-            <Typography sx={{ marginTop: 5, }} >
-              Ngày Đăng :{item.createdDate}
-            </Typography>
-
-          </Box>
-        ))}
+            <Box>
+              <Typography variant="h4">
+                {currentPost?.title}
+              </Typography>
+              <img src={`http://52.193.212.182:8080/image/${currentPost?.images[0]}`} alt="nghien cuu" width="550" height="350" />
+              <ReactMarkdown rehypePlugins={[rehypeRaw]} children={currentPost?.description} />
+              <Typography sx={{ marginTop: 5, }} >
+                Ngày Đăng :{currentPost?.createdDate}
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={4}>
+            < XemNhieu currentPost={currentPost} />
+          </Grid>
+        </Grid>
       </Container>
-    </>
+    </Box>
   );
 }

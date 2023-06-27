@@ -112,13 +112,13 @@ export default function SearchPost() {
         </thead>
         <tbody>
           {
-            posts?.map(({ id, title, images, categoryId, createdDate }) => (
+            posts?.map((post) => (
               <tr key={id}>
-                <td>{id}</td>
-                <td>{title}</td>
-                <td>{images}</td>
-                <td>{categoryId}</td>
-                <td>{createdDate}</td>
+                <td>{post.id}</td>
+                <td>{post.title}</td>
+                <img src={`http://52.193.212.182:8080/image/${post.images[0]}`} width="50" height="50" />
+                <td>{post.categoryId}</td>
+                <td>{post.createdDate}</td>
                 <td>
                   <button className='btn btn-danger' onClick={() => deleteItem(id)}>
                     <i className="fa-solid fa-trash-can"></i> Delete

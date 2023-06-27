@@ -38,6 +38,8 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/client' element={<Home />} />
             <Route index element={<Navigate to="/client/content" />} />
+            {/* <Route path='/po' element={<Post />} /> */}
+
 
             <Route path='/tintuc/:id' element={<Tintuc />} />
             <Route path='/thongtin/:id' element={<ThongTin />} />

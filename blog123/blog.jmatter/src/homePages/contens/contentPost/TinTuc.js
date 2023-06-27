@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
@@ -53,18 +53,17 @@ export default function Tintuc() {
                 key={post.id}
                 post={post}>
 
-                <ReactMarkdown variant="h4">
+                <Typography variant="subtitle1">
                   {post.title}
-                </ReactMarkdown>
-                <ReactMarkdown>
-                  {post.description}
-                </ReactMarkdown>
+                </Typography>
+                <ReactMarkdown children={post.description} />
+
                 <img src={`http://52.193.212.182:8080/image/${post.images[0]}`} width="550" height="300"></img>
 
               </Grid>
             ))}
 
-            
+
           </Grid>
         </Box>
       </Container>

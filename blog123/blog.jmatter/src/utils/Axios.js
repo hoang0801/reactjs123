@@ -14,6 +14,13 @@ export const axiosInstance = axios.create({
   }
 });
 
+export const axiosPublicInstance = axios.create({
+  baseURL: 'http://52.193.212.182:8080',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+
 axiosInstance.interceptors.request.use(function (config) {
   let { headers } = config;
 

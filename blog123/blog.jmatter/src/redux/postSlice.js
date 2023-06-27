@@ -10,7 +10,8 @@ const initialState = {
   error: null,
   search: {
     start: 0,
-    length: 10,
+    length: 50,
+    id: 0,
     categoryId: ''
   }
 };

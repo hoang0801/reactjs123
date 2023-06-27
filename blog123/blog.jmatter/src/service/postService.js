@@ -1,4 +1,4 @@
-import { axiosInstance } from "../utils/Axios";
+import { axiosInstance, axiosPublicInstance } from "../utils/Axios";
 
 export const searchPostAPI = async (search) => {
   const config = {
@@ -6,7 +6,7 @@ export const searchPostAPI = async (search) => {
     method: 'POST',
     data: search
   };
-  return handleRequest(config);
+  return handleRequestPublic(config);
 };
 
 export const addPostAPI = async (post) => {
@@ -48,10 +48,23 @@ export const deletePostAPI = async (id) => {
   return handleRequest(config);
 };
 
-
 const handleRequest = async (config) => {
   try {
     const resp = await axiosInstance(config);
+    let result = resp.data;
+    return { code: 200, result };
+  } catch (error) {
+    console.log(error);
+    if (error.response)
+      return (error.response.data);
+
+    return ({ code: "408", message: error.message });
+  }
+};
+
+const handleRequestPublic = async (config) => {
+  try {
+    const resp = await axiosPublicInstance(config);
     let result = resp.data;
     return { code: 200, result };
   } catch (error) {

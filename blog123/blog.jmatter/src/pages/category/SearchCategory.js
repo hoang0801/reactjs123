@@ -36,6 +36,7 @@ export default function SearchCategory() {
 
   const deleteItem = async (id) => {
     let { code } = await deleteCategoryAPI(id);
+    console.log(code);
 
     if (code === 200) {
       toast("Thanh cong!!", { position: toast.POSITION.TOP_CENTER, type: 'success', theme: 'colored' });

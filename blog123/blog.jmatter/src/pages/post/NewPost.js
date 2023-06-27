@@ -21,9 +21,9 @@ export default function NewPost() {
   }
 
   const NewItemSchema = Yup.object().shape({
-    title: Yup.string().required("Required, please enter."),
-    description: Yup.string().required("Required, please enter."),
-    category: Yup.object().nullable().required("Required, please enter."),
+    // title: Yup.string().required("Required, please enter."),
+    // description: Yup.string().required("Required, please enter."),
+    // category: Yup.object().nullable().required("Required, please enter."),
     // createdBy: Yup.object().nullable().required("Required, please enter."),
   });
 
@@ -39,10 +39,10 @@ export default function NewPost() {
   const addNew = async (post) => {
     console.log(post);
     var formdata = new FormData();
-    formdata.append("title", post.title);
-    formdata.append("description", post.description);
+    formdata.append("title", `${post.title}`);
+    formdata.append("description", `${post.description}`);
     formdata.append("imageFile ", selectedFile);
-    formdata.append("categoryId ", post.categoryId);
+    formdata.append("categoryId ", `${post.categoryId}`);
 
     let { code } = await addPostAPI(formdata);
     console.log(code);
