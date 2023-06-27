@@ -40,7 +40,7 @@ function ContentFeatured() {
             <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
               {posts.map((post) => (
                 <Stack spacing={2} key={post.id}>
-                  <Typography variant="subtitle2">
+                  <Typography sx={{fontSize:20}} variant="h3">
                     <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${post.id}`}>
                       {post.title}
                     </Link>
@@ -101,13 +101,18 @@ function KinhDoanh() {
 
       <Grid marginTop={2} container spacing={2}>
         <Grid item xs={8}>
-          {posts?.map((item) => (
+          {posts?.slice(0, 1).map((item) => (
             <Box containers key={item.id} >
               <Stack direction="row" spacing={2} >
-                <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
+              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+              <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
+                      </Link>
+               
                 <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
-                  <Typography variant="h6">
-                    {item.title}
+                  <Typography sx={{fontSize:20}} variant="h3">
+                  <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                  {item.title}
+                      </Link>
                   </Typography>
                   <Typography>
                     phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
@@ -132,11 +137,14 @@ function KinhDoanh() {
         </Grid>
       </Grid>
       <Divider />
-      <Stack direction="row" spacing={2} marginTop={3}>
+    
+      <Stack direction="row" spacing={2} marginTop={3} >
+        
         <li>Bị phạt hơn 50 triệu đồng vì livestream bán nước hoa nhái </li>
         <li>Quốc hội yêu cầu thanh tra toàn diện thị trường bảo hiểm nhân thọ</li>
         <li>Quy hoạch Bắc Ninh là thành phố thuộc Trung ương vào năm 2030</li>
       </Stack>
+   
       <Divider />
     </Box>
 
@@ -145,6 +153,22 @@ function KinhDoanh() {
 }
 
 function BĐS() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    find();
+  }, []);
+
+  const find = async () => {
+    let resp = await searchPostAPI({
+      "start": 0,
+      "length": 10,
+      "categoryId": 91
+    }); //await dùng trong hàm async
+    console.log(resp.result);
+    setPosts(resp?.result?.data);
+
+  };
   return (
 
     <Box marginLeft={4}>
@@ -159,25 +183,33 @@ function BĐS() {
       <Grid marginTop={2} container spacing={2}>
 
         <Grid item xs={8}>
-          <Box containers >
-            <Stack direction="row" spacing={2}>
-              <img src={`bds.jpg`} width={140} height={130} />
-              <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
-                <Typography variant="h6">
-                  3 đường sẽ mở quanh khu Vinhomes Ocean Park
-                </Typography>
-                <Typography>
-                  3 tuyến đường sẽ mở quanh Vinhomes Ocean Park, trong đó có tuyến giúp tăng cường kết nối với khu đô thị Ecopark.                 </Typography>
-              </Box>
-            </Stack>
-          </Box>
+        {posts?.slice(0, 1).map((item) => (
+            <Box containers key={item.id} >
+              <Stack direction="row" spacing={2} >
+              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+              <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
+                      </Link>
+               
+                <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
+                  <Typography sx={{fontSize:20}} variant="h3">
+                  <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                  {item.title}
+                      </Link>
+                  </Typography>
+                  <Typography>
+                    phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
+                  </Typography>
+                </Box>
+              </Stack>
+            </Box>
+          ))}
         </Grid>
 
 
 
         <Grid item xs={4}>
           <Box container >
-            <Typography variant="h6">
+            <Typography sx={{fontSize:20}} variant="h3">
               Hướng gỡ khó cho dự án 5 tỷ USD của Novaland
             </Typography>
             <Typography variant="body2">
@@ -200,6 +232,22 @@ function BĐS() {
 
 
 function TheThao() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    find();
+  }, []);
+
+  const find = async () => {
+    let resp = await searchPostAPI({
+      "start": 0,
+      "length": 10,
+      "categoryId": 92
+    }); //await dùng trong hàm async
+    console.log(resp.result);
+    setPosts(resp?.result?.data);
+
+  };
   return (
 
     <Box marginLeft={4}>
@@ -209,31 +257,36 @@ function TheThao() {
 
       </Typography>
 
-
-
       <Grid marginTop={2} container spacing={2}>
 
         <Grid item xs={8}>
-          <Box containers >
-            <Stack direction="row" spacing={2}>
-              <img src={`dqh.jpg`} width={140} height={130} />
-              <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
-                <Typography variant="h6">
-                  Cơ thủ Quốc Hoàng thua đau cựu vô địch châu Âu
-                </Typography>
-                <Typography>
-                  Dương Quốc Hoàng cộng bi lỗi và thua sát nút Marc Bijsterbosch 9-10 ở tứ kết pool 9 bi Tây Ban Nha Mở rộng.
-                </Typography>
-              </Box>
-            </Stack>
-          </Box>
+        {posts?.slice(0, 1).map((item) => (
+            <Box containers key={item.id} >
+              <Stack direction="row" spacing={2} >
+              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+              <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
+                      </Link>
+               
+                <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
+                  <Typography sx={{fontSize:20}} variant="h3">
+                  <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                  {item.title}
+                      </Link>
+                  </Typography>
+                  <Typography>
+                    phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
+                  </Typography>
+                </Box>
+              </Stack>
+            </Box>
+          ))}
         </Grid>
 
 
 
         <Grid item xs={4}>
           <Box container >
-            <Typography variant="h6">
+            <Typography sx={{fontSize:20}} variant="h3">
               Tiền đạo nữ Đức vui vì CĐV Việt Nam được ăn mừng
             </Typography>
             <Typography variant="body2">
@@ -256,6 +309,22 @@ function TheThao() {
 
 
 function GiaiTri() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    find();
+  }, []);
+
+  const find = async () => {
+    let resp = await searchPostAPI({
+      "start": 0,
+      "length": 10,
+      "categoryId": 93
+    }); //await dùng trong hàm async
+    console.log(resp.result);
+    setPosts(resp?.result?.data);
+
+  };
   return (
 
     <Box marginLeft={4}>
@@ -269,26 +338,33 @@ function GiaiTri() {
       <Grid marginTop={2} container spacing={2}>
 
         <Grid item xs={8}>
-          <Box containers >
-            <Stack direction="row" spacing={2}>
-              <img src={`line.jpg`} width={140} height={130} />
-              <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
-                <Typography variant="h6">
-                  Quốc hội yêu cầu thanh tra toàn diện thị trường bảo hiểm nhân thọ
-                </Typography>
-                <Typography>
-                  phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
-                </Typography>
-              </Box>
-            </Stack>
-          </Box>
+        {posts?.slice(0, 1).map((item) => (
+            <Box containers key={item.id} >
+              <Stack direction="row" spacing={2} >
+              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+              <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
+                      </Link>
+               
+                <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
+                  <Typography sx={{fontSize:20}} variant="h3">
+                  <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                  {item.title}
+                      </Link>
+                  </Typography>
+                  <Typography>
+                    phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
+                  </Typography>
+                </Box>
+              </Stack>
+            </Box>
+          ))}
         </Grid>
 
 
 
         <Grid item xs={4}>
           <Box container >
-            <Typography variant="h6">
+            <Typography sx={{fontSize:20}} variant="h3">
               Ý định siết đầu tư vào Trung Quốc của Mỹ
             </Typography>
             <Typography variant="body2">

@@ -46,10 +46,10 @@ export default function ContentPost() {
               {posts.slice(2, 3).map((post) => (
                 <Stack direction="row" spacing={2} key={post.id} >
                   <Link to={`/thongtin/${post.id}`} >
-                    <img src={`http://52.193.212.182:8080/image/${post.images[0]}`} alt="nghien cuu" width="450" height="300" />
+                    <img src={`http://52.193.212.182:8080/image/${post.images[0]}`} alt="nghien cuu" width="470" height="300" />
                   </Link>
                   <Grid>
-                    <Typography variant="h5">
+                    <Typography sx={{fontSize:20}} variant="h3">
                       <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${post.id}`} >
                         {post.title}
                       </Link>
@@ -62,7 +62,7 @@ export default function ContentPost() {
                 </Stack>
               ))}
 
-              <Stack marginLeft={3} direction="row" spacing={4} sx={{ marginTop: 4 }}>
+              <Stack marginLeft={-2} direction="row" spacing={4} sx={{ marginTop: 4 }}>
                 {posts.slice(1, 4).map((post) => (
                   <Box
                     p={2}
@@ -70,14 +70,14 @@ export default function ContentPost() {
                     width="300"
                     height="200"
                     key={post.id}>
-                    <Typography variant="h6" color="#0A0606" >
+                    <Typography sx={{fontSize:20}} variant="h3" color="#0A0606" >
                       <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${post.id}`} >
                         {post.title}
                       </Link>
 
                     </Typography>
                     <ReactMarkdown>
-                      {post.direction}
+                    Chân chạy Quách Thị Lan cùng bốn VĐV điền kinh khác dính doping của Việt Nam ở SEA Games 31 bị huỷ toàn bộ thành tích và nhận án phạt cấm thi đấu từ 16 đến 18 tháng.
                     </ReactMarkdown>
                   </Box>
                 ))}
