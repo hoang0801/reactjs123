@@ -1,12 +1,15 @@
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import LayOut from './layout/Layout';
 
 function App() {
   return (
     <BrowserRouter>
-      <Route>
-      </Route>
+      <Routes>
+      <Route index element={<LayOut/>} />
+      </Routes>
     </BrowserRouter>
+    
   );
 }
 
