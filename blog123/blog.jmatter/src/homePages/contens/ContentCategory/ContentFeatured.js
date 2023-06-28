@@ -38,9 +38,9 @@ function ContentFeatured() {
         <Grid container spacing={2}>
           <Grid xs={4}>
             <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
-              {posts.map((post) => (
+              {posts?.slice(5, 13).map((post) => (
                 <Stack spacing={2} key={post.id}>
-                  <Typography sx={{fontSize:20}} variant="h3">
+                  <Typography sx={{ fontSize: 20 }} variant="h3">
                     <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${post.id}`}>
                       {post.title}
                     </Link>
@@ -104,15 +104,15 @@ function KinhDoanh() {
           {posts?.slice(0, 1).map((item) => (
             <Box containers key={item.id} >
               <Stack direction="row" spacing={2} >
-              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
-              <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
-                      </Link>
-               
+                <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                  <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
+                </Link>
+
                 <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
-                  <Typography sx={{fontSize:20}} variant="h3">
-                  <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
-                  {item.title}
-                      </Link>
+                  <Typography sx={{ fontSize: 20 }} variant="h3">
+                    <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                      {item.title}
+                    </Link>
                   </Typography>
                   <Typography>
                     phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
@@ -137,14 +137,14 @@ function KinhDoanh() {
         </Grid>
       </Grid>
       <Divider />
-    
+
       <Stack direction="row" spacing={2} marginTop={3} >
-        
+
         <li>Bị phạt hơn 50 triệu đồng vì livestream bán nước hoa nhái </li>
         <li>Quốc hội yêu cầu thanh tra toàn diện thị trường bảo hiểm nhân thọ</li>
         <li>Quy hoạch Bắc Ninh là thành phố thuộc Trung ương vào năm 2030</li>
       </Stack>
-   
+
       <Divider />
     </Box>
 
@@ -183,18 +183,18 @@ function BĐS() {
       <Grid marginTop={2} container spacing={2}>
 
         <Grid item xs={8}>
-        {posts?.slice(0, 1).map((item) => (
+          {posts?.slice(0, 1).map((item) => (
             <Box containers key={item.id} >
               <Stack direction="row" spacing={2} >
-              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
-              <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
-                      </Link>
-               
+                <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                  <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
+                </Link>
+
                 <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
-                  <Typography sx={{fontSize:20}} variant="h3">
-                  <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
-                  {item.title}
-                      </Link>
+                  <Typography sx={{ fontSize: 20 }} variant="h3">
+                    <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                      {item.title}
+                    </Link>
                   </Typography>
                   <Typography>
                     phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
@@ -209,7 +209,7 @@ function BĐS() {
 
         <Grid item xs={4}>
           <Box container >
-            <Typography sx={{fontSize:20}} variant="h3">
+            <Typography sx={{ fontSize: 20 }} variant="h3">
               Hướng gỡ khó cho dự án 5 tỷ USD của Novaland
             </Typography>
             <Typography variant="body2">
@@ -260,18 +260,18 @@ function TheThao() {
       <Grid marginTop={2} container spacing={2}>
 
         <Grid item xs={8}>
-        {posts?.slice(0, 1).map((item) => (
+          {posts?.slice(0, 1).map((item) => (
             <Box containers key={item.id} >
               <Stack direction="row" spacing={2} >
-              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
-              <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
-                      </Link>
-               
+                <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                  <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
+                </Link>
+
                 <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
-                  <Typography sx={{fontSize:20}} variant="h3">
-                  <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
-                  {item.title}
-                      </Link>
+                  <Typography sx={{ fontSize: 20 }} variant="h3">
+                    <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                      {item.title}
+                    </Link>
                   </Typography>
                   <Typography>
                     phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
@@ -286,7 +286,7 @@ function TheThao() {
 
         <Grid item xs={4}>
           <Box container >
-            <Typography sx={{fontSize:20}} variant="h3">
+            <Typography sx={{ fontSize: 20 }} variant="h3">
               Tiền đạo nữ Đức vui vì CĐV Việt Nam được ăn mừng
             </Typography>
             <Typography variant="body2">
@@ -338,18 +338,18 @@ function GiaiTri() {
       <Grid marginTop={2} container spacing={2}>
 
         <Grid item xs={8}>
-        {posts?.slice(0, 1).map((item) => (
+          {posts?.slice(0, 1).map((item) => (
             <Box containers key={item.id} >
               <Stack direction="row" spacing={2} >
-              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
-              <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
-                      </Link>
-               
+                <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                  <img src={`http://52.193.212.182:8080/image/${item.images[0]}`} width={140} height={130} />
+                </Link>
+
                 <Box sx={{ borderRight: 1, borderColor: '#AAAAAA' }}>
-                  <Typography sx={{fontSize:20}} variant="h3">
-                  <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
-                  {item.title}
-                      </Link>
+                  <Typography sx={{ fontSize: 20 }} variant="h3">
+                    <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${item.id}`} >
+                      {item.title}
+                    </Link>
                   </Typography>
                   <Typography>
                     phủ được giao thanh tra toàn diện thị trường bảo hiểm nhân thọ, nhất là sản phẩm bảo hiểm liên kết đầu tư.
@@ -364,7 +364,7 @@ function GiaiTri() {
 
         <Grid item xs={4}>
           <Box container >
-            <Typography sx={{fontSize:20}} variant="h3">
+            <Typography sx={{ fontSize: 20 }} variant="h3">
               Ý định siết đầu tư vào Trung Quốc của Mỹ
             </Typography>
             <Typography variant="body2">

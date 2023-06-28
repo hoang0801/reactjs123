@@ -74,7 +74,11 @@ export default function TopBar1() {
               <Typography sx={{ color: '#808080' }}  >Products</Typography>
               <Typography sx={{ color: '#808080' }}  >Developers</Typography>
               <Typography sx={{ color: '#808080' }}  >Businesses</Typography>
-              <Typography sx={{ color: '#808080' }}  >Suport</Typography>
+              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin`} >
+                <Typography sx={{ color: '#808080' }}  >Suport</Typography>
+              </Link>
+
+
             </Stack>
 
           </Box>

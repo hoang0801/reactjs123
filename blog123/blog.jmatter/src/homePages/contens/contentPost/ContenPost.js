@@ -4,8 +4,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { searchPost, setPostSearch } from "../../../redux/postSlice";
-
-
+import "./Hover.css";
 
 export default function ContentPost() {
   const { posts, recordsFiltered, search, error } = useSelector((state) => state.post);
@@ -36,6 +35,8 @@ export default function ContentPost() {
   };
 
 
+
+
   return (
     <Box bgcolor={"#EEEEEE"} ><Box marginTop="20">
       <Grid container spacing={2}>
@@ -49,7 +50,7 @@ export default function ContentPost() {
                     <img src={`http://52.193.212.182:8080/image/${post.images[0]}`} alt="nghien cuu" width="470" height="300" />
                   </Link>
                   <Grid>
-                    <Typography sx={{fontSize:20}} variant="h3">
+                    <Typography sx={{ fontSize: 20 }} variant="h3">
                       <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${post.id}`} >
                         {post.title}
                       </Link>
@@ -70,14 +71,14 @@ export default function ContentPost() {
                     width="300"
                     height="200"
                     key={post.id}>
-                    <Typography sx={{fontSize:20}} variant="h3" color="#0A0606" >
+                    <Typography sx={{ fontSize: 20 }} variant="h3" color="#0A0606" >
                       <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${post.id}`} >
                         {post.title}
                       </Link>
 
                     </Typography>
                     <ReactMarkdown>
-                    Chân chạy Quách Thị Lan cùng bốn VĐV điền kinh khác dính doping của Việt Nam ở SEA Games 31 bị huỷ toàn bộ thành tích và nhận án phạt cấm thi đấu từ 16 đến 18 tháng.
+                      Chân chạy Quách Thị Lan cùng bốn VĐV điền kinh khác dính doping của Việt Nam ở SEA Games 31 bị huỷ toàn bộ thành tích và nhận án phạt cấm thi đấu từ 16 đến 18 tháng.
                     </ReactMarkdown>
                   </Box>
                 ))}
@@ -86,7 +87,12 @@ export default function ContentPost() {
 
 
             <Grid item xs={4}>
-              <img src={'pcc.png'} width="320" height="570" />
+              <Box marginLeft={2.5}>
+                <a className="icon-footer" href="https://www.facebook.com/">
+                  <img src={'pcc.png'} width="320" height="600" />
+                </a>
+
+              </Box>
             </Grid>
           </Stack>
         </Grid>

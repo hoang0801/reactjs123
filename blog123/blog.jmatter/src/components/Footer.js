@@ -10,7 +10,7 @@ export default function Footer() {
         <p>&copy; {new Date().getFullYear()} - My Blog. All rights reserved.</p>
         <a className="icon-footer" href="https://github.com/"><GitHubIcon /></a>
         <a className="icon-footer" href="https://www.google.com.vn/"><GoogleIcon /></a>
-        <a className="icon-footer" href="https://www.facebook.com/"><FacebookIcon /></a>
+        <a className="icon-footer" href="https://www.facebook.com/Lehoang0777732999/"><FacebookIcon /></a>
       </div>
     </footer>
   );

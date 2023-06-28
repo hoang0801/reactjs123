@@ -1,4 +1,5 @@
 import { Box, Container, Divider, Grid } from "@mui/material";
+import Footer from "../components/Footer";
 import TopBar1 from "./components/Header";
 import ContentFeatured from "./contens/ContentCategory/ContentFeatured";
 import KhoaHocVaCongNghe from "./contens/ContentCategory/KH&CN";
@@ -25,12 +26,15 @@ export default function Home() {
               <ContentFeatured />
             </Grid>
           </Box>
-          <Divider/>
-          
+          <Divider />
+
           <Box marginTop={5}  >
             <Grid item sx={12}>
-              <KhoaHocVaCongNghe/>
+              <KhoaHocVaCongNghe />
             </Grid>
+          </Box>
+          <Box>
+            <Footer />
           </Box>
         </Box>
 
