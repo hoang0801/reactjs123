@@ -47,6 +47,7 @@ function ContentFeatured() {
                   </Typography>
                   <Stack direction="row" spacing={2}>
                     <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin/${post.id}`}>
+                      
                       <img src={`http://52.193.212.182:8080/image/${post.images[0]}`} width={80} height={80} />
                     </Link>
                     <Typography variant="body2">

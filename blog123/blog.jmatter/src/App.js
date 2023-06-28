@@ -35,6 +35,12 @@ function App() {
       <AuthenProvider>
         <BrowserRouter>
           <Routes>
+          <Route path='/layoutSim' element={<LayOu />} />
+
+
+
+            
+
             <Route index element={<Home />} />
             <Route path='/client' element={<Home />} />
             <Route index element={<Navigate to="/client/content" />} />

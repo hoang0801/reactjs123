@@ -74,7 +74,7 @@ export default function TopBar1() {
               <Typography sx={{ color: '#808080' }}  >Products</Typography>
               <Typography sx={{ color: '#808080' }}  >Developers</Typography>
               <Typography sx={{ color: '#808080' }}  >Businesses</Typography>
-              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/thongtin`} >
+              <Link style={{ textDecoration: 'none', color: "#040404" }} to={`/layoutsim`} >
                 <Typography sx={{ color: '#808080' }}  >Suport</Typography>
               </Link>
 
