@@ -2,7 +2,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { AppBar, Box, Button, IconButton, InputBase, Paper, Stack, Toolbar, Typography } from "@mui/material";
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { searchPost, setPostSearch } from '../../redux/postSlice';
 
 export default function TopBar1() {

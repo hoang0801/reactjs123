@@ -35,11 +35,11 @@ function App() {
       <AuthenProvider>
         <BrowserRouter>
           <Routes>
-          <Route path='/layoutSim' element={<LayOu />} />
+            <Route path='/layoutSim' element={<MainLayout />} />
 
 
 
-            
+
 
             <Route index element={<Home />} />
             <Route path='/client' element={<Home />} />
