@@ -58,6 +58,34 @@ export default function Sidebar() {
         </AccordionSummary>
 
       </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />} >
+          <Link style={{ textDecoration: 'none', color: "#151212" }} to={`/collection/xe-dang-ban`}>
+            <Typography>Năm sản xuất</Typography>
+          </Link>
+        </AccordionSummary>
+
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />} >
+          <Link style={{ textDecoration: 'none', color: "#151212" }} to={`/collection/xe-dang-ban`}>
+            <Typography>Màu xe</Typography>
+          </Link>
+        </AccordionSummary>
+
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />} >
+          <Link style={{ textDecoration: 'none', color: "#151212" }} to={`/collection/xe-dang-ban`}>
+            <Typography>Xe Đã bán</Typography>
+          </Link>
+        </AccordionSummary>
+
+      </Accordion>
 
 
 

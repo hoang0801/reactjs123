@@ -9,3 +9,24 @@
   background-position: center center;
 
 }
+
+
+.box-price{
+text-align: center;
+  display: inline-block;
+  border-radius: 20px;
+  border: 1px solid #d2d2d2;
+  margin-bottom: 5px;
+}
+
+.pro-price {
+  text-align: center;
+  display: inline-block;
+  border: 1px solid #d2d2d2;
+  padding: 5px 32px;
+  border-radius: 15px;
+  color: #222222;
+  font-weight: 600;
+  margin-bottom: 1px;
+  margin-top: -1px;
+}

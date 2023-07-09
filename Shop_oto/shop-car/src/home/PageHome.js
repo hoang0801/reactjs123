@@ -15,14 +15,19 @@ import Header from '../component/Header';
 import Products from '../products/Products';
 
 
+
+
 function PageHome() {
   return (
     <>
       <Box>
         <Container maxWidth='lg'>
           <Header />
+       
         </Container>
+        <Box marginTop={2}>
         <Slider />
+        </Box>
         <Container maxWidth='lg'  >
           <Products />
         </Container>

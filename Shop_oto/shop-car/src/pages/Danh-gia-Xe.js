@@ -1,11 +1,11 @@
 import { Box, Breadcrumbs, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BlogCategory from '../blogs/BlogCategory';
+import BlogVideo from '../blogs/BlogVideo';
 import Footer from '../component/Footer';
 import Header from '../component/Header';
 import './Blog.css';
-import BlogCategory from './BlogCategory';
-import BlogVideo from './BlogVideo';
 
 function DanhGiaXe() {
   return (
@@ -13,7 +13,7 @@ function DanhGiaXe() {
       <Container maxWidth="lg">
         <Header />
       </Container>
-      <div className='page-paner'>
+      <Box className='page-paner' marginTop={2}>
         <Box sx={{ justifyContent: 'center' }}>
           <Typography textAlign={'center'} colors='#fffff' p={2} fontSize={40} variant='h3' >
             ĐÁNH GIÁ XE
@@ -30,7 +30,7 @@ function DanhGiaXe() {
           </Breadcrumbs>
         </Box>
 
-      </div>
+      </Box>
       <Box>
         <BlogCategory />
       </Box>

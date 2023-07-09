@@ -5,6 +5,7 @@ import Footer from '../component/Footer';
 import Header from '../component/Header';
 import './Image.css';
 import NavTop from './NavTop';
+import ProductsAll from './ProductsAll';
 import Sidebar from './Sidebar_menu';
 import SidebarPrice from './Sidebar_price';
 
@@ -25,7 +26,7 @@ function XeDangBan() {
                 Trang chủ
               </Typography>
             </Link>
-            < Link style={{ textDecoration: 'none', color: "#ffffff" }} to={`/blogs/news`}>
+            < Link style={{ textDecoration: 'none', color: "#ffffff" }} to={`/collections/all`}>
               <Typography textAlign={'center'} variant='h6'>
                 Danh mục
               </Typography>
@@ -51,7 +52,12 @@ function XeDangBan() {
               </Box>
             </Grid>
             <Grid item xs={9} marginTop={10}>
+              <Box>
               <NavTop />
+              </Box>
+              <Box marginTop={3}>
+            <ProductsAll/>
+          </Box>
             </Grid>
           </Grid>
 

@@ -41,6 +41,16 @@ function Header2() {
             Tin Tức
           </Link>
         </Typography>
+        <Typography fontSize={18} variant='body2'>
+          <Link style={{ textDecoration: 'none', color: "gray" }} to={`/pages/about-us`}>
+           Giới thiệu
+          </Link>
+        </Typography>
+        <Typography fontSize={18} variant='body2'>
+          <Link style={{ textDecoration: 'none', color: "gray" }} to={`/pages/lien-he`}>
+            Liên Hệ
+          </Link>
+        </Typography>
 
 
 
