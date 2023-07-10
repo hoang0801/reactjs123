@@ -43,7 +43,7 @@ function XeDangBan() {
         <Container maxWidth='lg'>
           <Grid container spacing={3} >
             <Grid item xs={3} marginTop={10}>
-              <Box  >
+              <Box >
                 <Sidebar />
 
               </Box>
