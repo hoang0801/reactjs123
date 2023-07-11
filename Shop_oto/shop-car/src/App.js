@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import XeDangBan from './collections/Xe-dang-ban';
 import PageHome from './home/PageHome';
+import Insurance from './insurance/Insurance';
 import LayOut from './layout/Layout';
 import DanhGiaXe from './pages/Danh-gia-Xe';
 import GioiThieu from './pages/Gioi-thieu';
@@ -21,6 +22,7 @@ function App() {
         <Route path="blogs/danh-gia-xe" element={<DanhGiaXe />} />
         <Route path="pages/about-us" element={<GioiThieu />} />
         <Route path="pages/lien-he" element={<LienHe />} />
+        <Route path="blogs/bao-hiem" element={<Insurance />} />
       </Routes>
     </BrowserRouter>
 
